@@ -22,6 +22,7 @@ class GlobalChromeMappings(MappingRule):
         'go forward': Key('a-right'),
         'reload': Key('f5'),
 		'snurch': Key('a-d'),
+		# 'BB search': Key(R'/'),
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
         'Open Python docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
         'open team city <pascal_text>': Key("c-t") + Text("http://teamcity.inspirato.com/project.html?projectId=%(pascal_text)s") + Key("enter"),
