@@ -9,6 +9,7 @@ class VisualStudioMappings(MappingRule):
         'delete line': Key("s-delete"),
         'goat': Key("c-t"),
         'Blossom': Key("cs-b"),
+        'greg': Key("c-f"),
         # 'step over': Key("s-fll"),
         'line <number>': Key("c-g") + Text("%(number)s") + Key("enter,end"),
         'get called <number> <dashtext>': Key("alt,t,n,o") + Text("git cob feature/DF-%(number)s-%(dashtext)s"),

@@ -4,6 +4,8 @@ from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dic
 class GlobalMappings(MappingRule):
     mapping = {  
 		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
+		'replace': Key("c-h"),
+		'replace global': Key("cs-h"),
         'back space': Key('backspace'),
         'nip': Key('escape'),
         'snap': Key('a-tab'),

@@ -14,6 +14,8 @@ def bar(test):
 
 class CodeMappings(MappingRule):
     mapping = {  
+        'replace local': Key("c-h"),
+		'replace global': Key("cs-h"),
         'back space': Key('backspace'),
         'Div <text>': Text('<div>%(text)s</div>'),  
         'Open folder': Key('c-k,c-o'),
