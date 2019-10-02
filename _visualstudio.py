@@ -1,70 +1,65 @@
 #imports the library
-import os
-from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mimic)
+from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause)
 
-def foo(slot):
-    t = int(slot)
-    x = .15
-    z = .05
-    y = (t*z)
-    zed = y + x - z
-    return "(0.1, {}), left".format(zed)
-
-def bar(test):
-    print(test) 
-
-class CodeMappings(MappingRule):
+class VisualStudioMappings(MappingRule):
     mapping = {  
-        # Snippets
-        'text snip': Text('text') + Pause('50') + Key('tab'),
-        'key snip': Text('key') + Pause('50') + Key('tab'),
-        'pause snip': Text('pau') + Pause('50') + Key('tab'),
+        # temp
+        'Add navigation': Text('~/Views/Navigation/Header/Navigation'),
+        'Add header': Text('~/Views/Navigation/Header'),
+        'Add Extension': Text('.cshtml'),
 
-        # open files
-        "Open pie": Key("c-k,c-o,a-d") + Pause('50') + Text('C:\NatLink\NatLink\MacroSystem') + Key("enter:2"),
-        "Open react": Key("c-k,c-o,a-d") + Pause('50') + Text(R"D:\GitProjects\react-components") + Key("enter:2"),
+        # Bookmarks
+        'book <number>': Key("c-%(number)s"),
+        'book <number> snap': Key("cs-%(number)s"),
+        'book view': Key("c-`,"),
         
-        # Editing
-        'replace local': Key("c-h"),
-		'replace global': Key("cs-h"),
-        'back space': Key('backspace'),
-        'Div <text>': Text('<div>%(text)s</div>'),
-        'Open folder': Key('c-k,c-o'),
-        'New copy': Key('c-c,c-v'),
-        'copy down': Key('sa-down'),
-		'previ': Key('c-pgup'),
-		'nexty': Key('c-pgdown'), 
-		'Save them': Key('c-k,s'),
-		'X open': Key('cs-e'),
-		'Text open': Key('cs-g'),
-		'Sidebar': Key('c-b'),
-		'Reload browser': Key('w-4') + Pause('50') + Key('f5') + Pause('50') + Key('w-5'),
-		'Goat ref': Key('sa-f12'),
-        'select line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end,c-c'),
-        'line <number>': Key('c-g') + Text('%(number)d') + Key('enter,end'),
-        'line comment': Key("c-k,c-c"),
-        'line uncomment': Key("c-k,c-u"),
-        'tab <tab>': Key('a-%(tab)d'),
-        'get check out develop': Key("c-`,") + Pause("20") + Text("git co develop") + Key("enter"),
-        'get check out feature': Key("c-`,") + Pause("20") + Text("git co feature/DF-"),
-        'get called release': Key("c-`,") + Text("git cob release/"),
-        'get called feature': Key("c-`,") + Text("git cob feature/DF-"),
-        'num var': Key("%,(,n,u,m,b,e,r,),d"),
-        'git checkout <text>': Key("c-`") + Text("git co %(text)s/"),
-        'yarn run <text>': Key("c-k, s, c-`") + Pause('10') + Text("yarn run %(text)s") + Key("enter"), #build, dev
-        'yarn <text>': Key("c-k, s, c-`") + Pause('10') + Text("yarn %(text)s") + Key("enter"), #install, lint, clean
+        'Break snap': Key("f9"),
+        'Break view': Key("ca-b"),
+        'Run it': Key("f5"),
+        'snurch': Key("cs-f"),
+        'Attach <number>': Key("c-r,c-%(number)s"),
+        # 'close all tabs': Key("-"),
+        'delete line': Key("s-delete"),
+        'Sink dock': Key("c-[,s"),
+        'goat': Key("c-t"),
+        'Blossom': Key("cs-b"),
+        'X open': Key("ca-l"),
+        # Debugging
+        'step in': Key('f5'),
+        'step over': Key('f10'),
+        'step out': Key("s-f11"),
 
-        # 'test': bar("text"),  
+        # editing
+        'surround with': Key('c-e, c-u'),
+
+        'line <number>': Key("c-g") + Text("%(number)s") + Key("enter,end"),
+        'get called <number> <dashtext>': Key("alt,t,n,o") + Text("git cob feature/DF-%(number)s-%(dashtext)s"),
+        'get check out develop': Key("alt,t,n,o") + Text("git co develop") + Key("enter"),
+        'get check out <nospace>': Key("alt,t,n,o") + Text("git co %(nospace)s/DF-"),
+        'get discard': Key("alt,t,n,o") + Text("git checkout -- .") + Key("enter"),
+        'get merge continue': Key("alt,t,n,o") + Text("git merge --continue") + Key("enter"),
+        'get merge develop': Key("alt,t,n,o") + Text("git merge origin/develop") + Key("enter"),
+        'get merge feature': Key("alt,t,n,o") + Text("git merge feature/DF-"),
+        'get pull': Key("alt,t,n,o") + Text("git pull") + Key("enter"),
+        'get push': Key("alt,t,n,o") + Text("git push") + Key("enter"),
+        'get stash [<text>]': Key("alt,t,n,o") + Text("git stash %(text)s") + Key("enter"), #drop/pop
+        'get commit <text>': Key("alt,t,n,o") + Text('git commit -am "%(text)s"'),
+        'save em': Key("cs-s"),
+        'Open solution': Key("cs-o"),
+        "Open dry fly": Key("cs-o,a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
+        "Open MC API": Key("cs-o,a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
     }
     extras=[
         Integer('tab', 1, 10),
         Integer('number', 1, 9999),
-        Dictation("text")
+        Dictation("text"),
+        Dictation("dashtext", default="").lower().replace(" ", "-"),
+        Dictation("nospace", default="").lower().replace(" ", ""),
     ]
 
-context = AppContext(executable='code')
-grammar=Grammar('Visual Studio Code',context=context)
-grammar.add_rule(CodeMappings())
+context = AppContext(executable='devenv')
+grammar=Grammar('Visual Studio',context=context)
+grammar.add_rule(VisualStudioMappings())
 grammar.load()
 
 def unload():

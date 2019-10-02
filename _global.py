@@ -1,11 +1,10 @@
 #imports the library
+
 from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause)
 
 class GlobalMappings(MappingRule):
     mapping = {  
 		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
-		'replace': Key("c-h"),
-		'replace global': Key("cs-h"),
         'back space': Key('backspace'),
         'nip': Key('escape'),
         'snap': Key('a-tab'),
@@ -22,7 +21,7 @@ class GlobalMappings(MappingRule):
         'left <number> word': Key("ctrl:down, left:%(number)d, ctrl:up"),
         'right [<number>]': Key('right:%(number)d'),
         'right <number> word': Key("ctrl:down, right:%(number)d, ctrl:up"),
-        "camel <camel_text>": Text("%(camel_text)s"),
+        "camel [under] <camel_text>": Text("%(under)s%(camel_text)s"),
         "snake [<under>] <snaketext>": Text("%(under)s%(snaketext)s"),
         "dash [<dash>] <dashtext>": Text("%(dash)s%(dashtext)s"),
         "paschal [<pascaltext>]": Text("%(pascaltext)s"),
@@ -31,22 +30,22 @@ class GlobalMappings(MappingRule):
         'select up <number>': Key("end, shift:down, up:%(number)d, down, home, shift:up"),
         'select right <number>': Key("ctrl:down, shift:down, right:%(number)d, ctrl:up, shift:up"),
         'select left <number>': Key("ctrl:down, shift:down, left:%(number)d, ctrl:up, shift:up"),
-        'line end': Key("end"),
-        'line home': Key("home"),
-        'line comment': Key("c-k,c-c"),
-        'line uncomment': Key("c-k,c-u"),
+        'line end [<number>]': Key("end") + Key("left:%(number)d"),
+        'line home [<number>]': Key("home") + Key("right:%(number)d"),
         'undo [<number>]': Key("c-z:%(number)d"),
         'redo [<number>]': Key("c-y:%(number)d"),
-        'dos files': Key("w-1"),
-        'dos Outlook': Key("w-2"),
-        'dos Teams': Key("w-3"),
-        'dos Web': Key("w-4"),
-        'dos Code': Key("w-5"),
-        'dos stud': Key("w-6"),
-        'dos pre': Key("w-7"),
-        'dos notepad': Key("w-8"),
-        'dos dragon': Key("w-9"),
-        'flag it': Key("enter") + Text("//ToDo: DF-10303 remove unused fields, delete later") + Key("down,c-k,c-c")
+        'to files': Key("w-1"),
+        'to Outlook': Key("w-2"),
+        'to Teams': Key("w-3"),
+        'to Web': Key("w-4"),
+        'to pie': Key("w-5") + Pause('50') + Key("enter"),
+        'to code': Key("win:down, 5, 5, win:up") + Pause('50') + Key("enter"),
+        'to stud': Key("w-6"),
+        'to pre': Key("w-7"),
+        'to notepad': Key("w-8"),
+        'to dragon': Key("w-9"),
+        'flag it': Key("enter") + Text("//ToDo: DF-10303 remove unused fields, delete later") + Key("down,c-k,c-c"),
+        'craig pass': Text("conec#20"),
         }
 
     extras=[
