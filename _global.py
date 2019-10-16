@@ -1,6 +1,6 @@
 #imports the library
 
-from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause)
+from dragonfly import (BringApp, StartApp, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
 
 class GlobalMappings(MappingRule):
     mapping = {  
@@ -44,8 +44,14 @@ class GlobalMappings(MappingRule):
         'to pre': Key("w-7"),
         'to notepad': Key("w-8"),
         'to dragon': Key("w-9"),
-        'flag it': Key("enter") + Text("//ToDo: DF-10303 remove unused fields, delete later") + Key("down,c-k,c-c"),
+        
         'craig pass': Text("conec#20"),
+        'connect pre': StartApp("C:\Program Files (x86)\Pritunl\pritunl.exe") + Pause("300") + Mouse("[0.57, 0.29], left") + Pause('50') + Mouse("[0.57, 0.29], left") + Pause('400') + Text("C0nec#20!!21") + Pause('50') + Mouse("[0.55, 0.29], left"),
+
+        '[<number>] tab': Key('tab:%(number)d'),
+
+        # Temporary
+        'flag it': Key("enter") + Text("//ToDo: DF-10303 remove unused fields, delete later") + Key("down,c-k,c-c"),
         }
 
     extras=[

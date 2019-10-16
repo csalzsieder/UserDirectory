@@ -1,8 +1,26 @@
 #imports the library
-from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation)  
+from selenium import webdriver
+import time
+ 
+from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation)  
+
+def test():
+    options = webdriver.ChromeOptions()
+    
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument("--test-type")
+    options.binary_location = "/usr/bin/chromium"
+    driver = webdriver.Chrome(chrome_options=options)
+    driver.get('https://python.org')
+    
+
+def foo():
+    print(test)
 
 class GlobalChromeMappings(MappingRule):
     mapping = {
+        'web test': Function(test),
+        'print test': Function(foo),
         'close tab': Key('c-w'),
         'open tab': Key('c-t'),
         'duplicate tab': Key('y/25,t'),                  # vimium
@@ -20,16 +38,39 @@ class GlobalChromeMappings(MappingRule):
         'upy': Key('u'),
         'go back': Key('a-left'),
         'go forward': Key('a-right'),
-        'reload': Key('f5'),
+        'load': Key('f5'),
 		'snurch': Key('a-d'),
 		# 'BB search': Key(R'/'),
+
+        # Common websites
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
         'Open Python docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
         'open team city <pascal_text>': Key("c-t") + Text("http://teamcity.inspirato.com/project.html?projectId=%(pascal_text)s") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
         'open bitbucket': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
         'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=253") + Key("enter"),
+        'Open wiki': Key("c-t") + Text("https://inspirato.atlassian.net/wiki/spaces/IN/overview?mode=global") + Key("enter"),
+        'Open Gmail': Key("c-t") + Text("https://mail.google.com/mail/u/0/#inbox") + Key("enter"),
+        'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),
         'Open ticket <number>': Key("c-t") + Text("https://inspirato.atlassian.net/browse/DF-%(number)d") + Key("enter"),
+        'Open trunk': Key("c-t") + Text("https://dryfly-trunk.dev.inspirato.com") + Key("enter"),
+        'Open JS snippets': Key("c-t") + Text("https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets") + Key("enter"),
+
+        # Web console
+        'open debugger': Key('f12'),
+        'goat': Key('c-p'),
+        'run it': Key('f8'),
+        'step over': Key('s-f11'),
+        'step in': Key('f11'),
+        'step out': Key('f10'),
+        'elements tab': Key('c-1'),
+        'Consol tab': Key('c-2'),
+        'sources tab': Key('c-3'),
+        'network tab': Key('c-4'),
+        'performance tab': Key('c-5'),
+        'line <number>': Key('c-g') + Text('%(number)d') + Key('enter'),
+        'break snap': Key('c-f8'),
+        'inspect': Key('cs-c'),
         
     }
     extras=[
