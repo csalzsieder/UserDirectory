@@ -20,10 +20,10 @@ class VisualStudioMappings(MappingRule):
         'view recent': Key('c-comma'),
         'view edits': Key('cs-comma'),
         'line <number>': Key("c-g") + Text("%(number)s") + Key("enter,end"),
-        'close all tabs': Key("a-minus")+ Pause('50') + Key('a'),
+        'close all': Key("a-minus")+ Pause('50') + Key('a'),
         'close pinned': Key("a-minus")+ Pause('50') + Key('down:6, enter'),
         'pin tab': Key("a-minus")+ Pause('50') + Key('p'),
-        'save them': Key("cs-s"),
+        'save all': Key("cs-s"),
         'delete line': Key("s-delete"),
         'Sink dock': Key("c-[,s"),
         'goat': Key("c-t"),
@@ -51,19 +51,23 @@ class VisualStudioMappings(MappingRule):
         'surround with': Key('c-e, c-u'),
         'line comment': Key('c-k,c-c'),
         'line uncomment': Key('c-k,c-u'),
-        'add class': Key('ca-insert,enter'),
+
+        'add class': Key('ca-insert, down:6, enter'),
+        'add controller': Key('ca-insert,enter'),
         
         # git 
         'get called <number> <dashtext>': Key("alt,t,n,o") + Text("git cob feature/DF-%(number)s-%(dashtext)s"),
         'get check out develop': Key("alt,t,n,o") + Text("git co develop") + Key("enter"),
-        'get check out <nospace>': Key("alt,t,n,o") + Text("git co %(nospace)s/DF-"),
+        'get check out <nospace>': Key("alt,t,n,o") + Text("git co %(nospace)s/"),
+        'get check out MC': Key("alt,t,n,o") + Text("git co feature/new-mcapi-integration") + Key('enter'),
         'get discard': Key("alt,t,n,o") + Text("git checkout -- .") + Key("enter"),
         'get merge <text>': Key("alt,t,n,o") + Text("git merge --%(text)s") + Key("enter"), #Abort, merge
         'get merge develop': Key("alt,t,n,o") + Text("git merge origin/develop") + Key("enter"),
         'get merge feature': Key("alt,t,n,o") + Text("git merge feature/DF-"),
         'get pull': Key("alt,t,n,o") + Text("git pull") + Key("enter"),
         'get push': Key("alt,t,n,o") + Text("git push") + Key("enter"),
-        'get stash [<text>]': Key("alt,t,n,o") + Text("git stash %(text)s") + Key("enter"), #drop/pop
+        'get stash': Key("alt,t,n,o") + Text("git stash") + Key("enter"),
+        'get stash <text>': Key("alt,t,n,o") + Text("git stash %(text)s") + Key("enter"), #drop/pop
         'get commit': Key("alt,t,n,o") + Text('git commit -am ""') + Key("left"),
 
         # Snippets

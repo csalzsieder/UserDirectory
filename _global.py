@@ -1,6 +1,12 @@
 #imports the library
 
-from dragonfly import (BringApp, StartApp, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
+from dragonfly import (BringApp, StartApp, Function, Mimic, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
+
+def start_day():
+    # Mimic('open', 'dryfly')
+    # Pause('500')
+    Mimic('open', 'pie')
+    Mimic('connect', 'pre')
 
 class GlobalMappings(MappingRule):
     mapping = {  
@@ -34,6 +40,8 @@ class GlobalMappings(MappingRule):
         'line home [<number>]': Key("home") + Key("right:%(number)d"),
         'undo [<number>]': Key("c-z:%(number)d"),
         'redo [<number>]': Key("c-y:%(number)d"),
+        'snap load': Key('w-4') + Pause("10") + Key('c-1') + Pause("10") + Key('f5') + Pause("10") + Key('a-tab'),
+        
         'to files': Key("w-1"),
         'to Outlook': Key("w-2"),
         'to Teams': Key("w-3"),
@@ -41,14 +49,21 @@ class GlobalMappings(MappingRule):
         'to pie': Key("w-5") + Pause('50') + Key("enter"),
         'to code': Key("win:down, 5, 5, win:up") + Pause('50') + Key("enter"),
         'to stud': Key("w-6"),
-        'to pre': Key("w-7"),
+        'to postman': Key("w-7"),
         'to notepad': Key("w-8"),
         'to dragon': Key("w-9"),
         
         'craig pass': Text("conec#20"),
-        'connect pre': StartApp("C:\Program Files (x86)\Pritunl\pritunl.exe") + Pause("300") + Mouse("[0.57, 0.29], left") + Pause('50') + Mouse("[0.57, 0.29], left") + Pause('400') + Text("C0nec#20!!21") + Pause('50') + Mouse("[0.55, 0.29], left"),
+        'Prod pass': Text("1qaz@WSX3edc$RFV"),
+        'Sand pass': Text("1qaz@WSX3edc"),
 
+        # 'open dryfly': StartApp(R"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe") + Pause('500') + Key("cs-o,a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
+        # 'open MC API': StartApp(R"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe") + Pause('500') + Key("cs-o,a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
+        'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') + Text('C:\NatLink\NatLink\MacroSystem') + Key("enter:2"),
+        'open react': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') + Text('D:\GitProjects\react-components\src') + Key("enter:2"),
+        'connect pre': StartApp("C:\Program Files (x86)\Pritunl\pritunl.exe") + Pause("300") + Mouse("[0.57, 0.29], left") + Pause('50') + Mouse("[0.57, 0.29], left") + Pause('400') + Text("1qaz@WSX3edc$RFV") + Pause('50') + Mouse("[0.55, 0.29], left"),
         '[<number>] tab': Key('tab:%(number)d'),
+        'Start day': Function(start_day),
 
         # Temporary
         'flag it': Key("enter") + Text("//ToDo: DF-10303 remove unused fields, delete later") + Key("down,c-k,c-c"),
@@ -80,3 +95,4 @@ def unload():
     global grammar
     if grammar: grammar.unload()
     grammar = None
+

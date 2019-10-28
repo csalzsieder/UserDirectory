@@ -42,9 +42,7 @@ class CodeMappings(MappingRule):
         'Open folder': Key('c-k,c-o'),
         'New copy': Key('c-c,c-v'),
         'copy down': Key('sa-down'),
-		
 		'Load web': Key('w-4') + Pause('50') + Key('f5') + Pause('50') + Key('w-5'),
-		
         'select line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end,c-c'),
         'line <number>': Key('c-g') + Text('%(number)d') + Key('enter,end'),
         'line <number> <n>': Key('c-g') + Text('%(number)d') + Key('enter,end') + Key('left:%(n)d'),
@@ -55,7 +53,7 @@ class CodeMappings(MappingRule):
         # Navigation
         'previ': Key('c-pgup'),
 		'nexty': Key('c-pgdown'), 
-		'Save them': Key('c-k,s'),
+		'Save all': Key('c-k,s'),
 		'X open': Key('cs-e'),
 		'Text open': Key('cs-g'),
 		'Sidebar': Key('c-b'),
@@ -63,16 +61,18 @@ class CodeMappings(MappingRule):
 		'goat death': Key('f12'),
         'Goat': Key('c-p'),
         'focus code': Key('c-j'),
+        'close all': Key('c-k,w'),
 
         # git 
         'get check out develop': Key("c-`,") + Pause("20") + Text("git co develop") + Key("enter"),
         'get check out feature': Key("c-`,") + Pause("20") + Text("git co feature/DF-"),
+        'get check out long feature': Key("c-`,") + Pause("20") + Text("git co feature/"),
         'get called release': Key("c-`,") + Text("git cob release/"),
         'get called feature': Key("c-`,") + Text("git cob feature/DF-"),
         'num var': Key("%,(,n,u,m,b,e,r,),d"),
         'get checkout <text>': Key("c-`") + Text("git co %(text)s/"),
         'get merge <text>': Key("c-`") + Pause("20") + Text("git merge --%(text)s"), #Continue, abort
-        'get merge develop': Key("c-`") + Text("git merge develop") + Key('enter'),
+        'get merge develop': Key("c-`") + Text("git merge origin/develop") + Key('enter'),
         'get commit': Key("c-`") + Pause("10") + Text('git commit -am ""') + Pause("10") + Key('left'),
 
         # Builds

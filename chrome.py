@@ -40,7 +40,14 @@ class GlobalChromeMappings(MappingRule):
         'go forward': Key('a-right'),
         'load': Key('f5'),
 		'snurch': Key('a-d'),
-		# 'BB search': Key(R'/'),
+		'BB search': Text('/'),
+		'BB My work': Text('g,d'),
+		'BB sidebar': Text('['),
+		'BB filter': Text('f'),
+		'BB comments': Text('tc'),
+		'BB Overview': Text('pd'),
+		'BB Activity': Text('pa'),
+		'BB Commits': Text('pc'),
 
         # Common websites
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),

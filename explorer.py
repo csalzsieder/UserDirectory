@@ -17,10 +17,10 @@ class IERule(MappingRule):
             # for the sort command below,
             # once you've selected the relevant heading for sorting using the arrow keys, press enter
         "sort [headings]": Key("a-d, tab:4"),
-        "Open dry fly": Key("a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
+        "goat dry fly": Key("a-d") + Text('D:\GitProjects\dryfly\FreeStone') + Key('enter'),
         "Open MC API": Key("a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
         "copy grammers": Key("a-d") + Text('C:\NatLink\NatLink\MacroSystem') + Key('enter') + Pause('50') + Key('tab:9, down:2, shift:down, end, shift:up,c-c,a-d') + Text('C:\NatLink\UserDirectory') + Key('enter') + Pause('50') + Key('enter, tab:9,c-v') + Pause('50') + Key('enter'),
-        "Open react": Key("a-d") + Text(R"D:\GitProjects\react-components") + Key('enter'),
+        "goat react": Key("a-d") + Text(R"D:\GitProjects\react-components") + Key('enter'),
         "code <dashtext> ": Key("a-d") + Text('D:\GitProjects\%(dashtext)s') + Key('enter'),
 
     }
