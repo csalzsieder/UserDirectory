@@ -50,12 +50,13 @@ class GlobalChromeMappings(MappingRule):
 		'BB Commits': Text('pc'),
 
         # Common websites
+        'Open Azure': Key("c-t") + Text("https://portal.azure.com/#home") + Key("enter"),
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
         'Open Python docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
         'open team city <pascal_text>': Key("c-t") + Text("http://teamcity.inspirato.com/project.html?projectId=%(pascal_text)s") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
         'open bitbucket': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
-        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=253") + Key("enter"),
+        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=301") + Key("enter"),
         'Open wiki': Key("c-t") + Text("https://inspirato.atlassian.net/wiki/spaces/IN/overview?mode=global") + Key("enter"),
         'Open Gmail': Key("c-t") + Text("https://mail.google.com/mail/u/0/#inbox") + Key("enter"),
         'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),

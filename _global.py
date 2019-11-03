@@ -8,6 +8,8 @@ def start_day():
     Mimic('open', 'pie')
     Mimic('connect', 'pre')
 
+prod_pass = "1qaz@WSX3edc$RFV"
+
 class GlobalMappings(MappingRule):
     mapping = {  
 		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
@@ -43,7 +45,7 @@ class GlobalMappings(MappingRule):
         'snap load': Key('w-4') + Pause("10") + Key('c-1') + Pause("10") + Key('f5') + Pause("10") + Key('a-tab'),
         
         'to files': Key("w-1"),
-        'to Outlook': Key("w-2"),
+        'to mail': Key("w-2"),
         'to Teams': Key("w-3"),
         'to Web': Key("w-4"),
         'to pie': Key("w-5") + Pause('50') + Key("enter"),
@@ -54,14 +56,21 @@ class GlobalMappings(MappingRule):
         'to dragon': Key("w-9"),
         
         'craig pass': Text("conec#20"),
+        'in pass': Text("conec#23"),
         'Prod pass': Text("1qaz@WSX3edc$RFV"),
-        'Sand pass': Text("1qaz@WSX3edc"),
+        'Sand pass': Text("C0nec#20!!"),
+        'in login': Text("csalzsieder@inspirato.com"),
+        'in Username': Text("csalzsieder"),
 
-        # 'open dryfly': StartApp(R"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe") + Pause('500') + Key("cs-o,a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
-        # 'open MC API': StartApp(R"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe") + Pause('500') + Key("cs-o,a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
-        'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') + Text('C:\NatLink\NatLink\MacroSystem') + Key("enter:2"),
-        'open react': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') + Text('D:\GitProjects\react-components\src') + Key("enter:2"),
-        'connect pre': StartApp("C:\Program Files (x86)\Pritunl\pritunl.exe") + Pause("300") + Mouse("[0.57, 0.29], left") + Pause('50') + Mouse("[0.57, 0.29], left") + Pause('400') + Text("1qaz@WSX3edc$RFV") + Pause('50') + Mouse("[0.55, 0.29], left"),
+        'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
+            + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
+            + Text(R'C:\NatLink\NatLink\MacroSystem') + Key("enter, tab:8, enter"),
+        'open react': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
+            + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
+            + Text(R'D:\GitProjects\react-components') + Key("enter, tab:8, enter"),
+        #         "Open dry fly": Key("cs-o,a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
+        # "Open MC API": Key("cs-o,a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
+        'connect pre': StartApp("C:\Program Files (x86)\Pritunl\pritunl.exe") + Pause("300") + Mouse("[0.57, 0.29], left") + Pause('50') + Mouse("[0.57, 0.29], left") + Pause('400') + Text(prod_pass) + Pause('50') + Mouse("[0.55, 0.29], left"),
         '[<number>] tab': Key('tab:%(number)d'),
         'Start day': Function(start_day),
 

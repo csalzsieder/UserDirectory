@@ -28,6 +28,7 @@ class VisualStudioMappings(MappingRule):
         'Sink dock': Key("c-[,s"),
         'goat': Key("c-t"),
         'X open': Key("ca-l"),
+        'PM open': Key("alt,t,n,o"),
 
         # Debugging
         'step in': Key('f5'),
@@ -68,7 +69,7 @@ class VisualStudioMappings(MappingRule):
         'get push': Key("alt,t,n,o") + Text("git push") + Key("enter"),
         'get stash': Key("alt,t,n,o") + Text("git stash") + Key("enter"),
         'get stash <text>': Key("alt,t,n,o") + Text("git stash %(text)s") + Key("enter"), #drop/pop
-        'get commit': Key("alt,t,n,o") + Text('git commit -am ""') + Key("left"),
+        'get commit <text>': Key("alt,t,n,o") + Text('git commit -am "%(text)s"'),
 
         # Snippets
         'Open snippets': Key('c-k,c-b'),
@@ -77,8 +78,7 @@ class VisualStudioMappings(MappingRule):
 
         # Opening solutions
         'Open solution': Key("cs-o"),
-        "Open dry fly": Key("cs-o,a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
-        "Open MC API": Key("cs-o,a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
+
     }
     extras=[
         Integer('tab', 1, 10),
