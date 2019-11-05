@@ -52,7 +52,7 @@ class GlobalChromeMappings(MappingRule):
         # Common websites
         'Open Azure': Key("c-t") + Text("https://portal.azure.com/#home") + Key("enter"),
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
-        'Open Python docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
+        'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
         'open team city <pascal_text>': Key("c-t") + Text("http://teamcity.inspirato.com/project.html?projectId=%(pascal_text)s") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
         'open bitbucket': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),

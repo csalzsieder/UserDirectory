@@ -11,7 +11,7 @@ def calculateSlotNumber(number):
 
 class CodeMappings(MappingRule):
     mapping = {  
-        'Slot <number>': Function(calculateSlotNumber),  
+        'Slot <number>': Function(calculateSlotNumber),
         'Activity': Key('c-1'),
         'chat': Key('c-2'),
         'Teams': Key('c-3'),

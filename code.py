@@ -1,6 +1,7 @@
 #imports the library
 import os
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import time
 from dragonfly import (Function,Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mimic)
 
@@ -12,26 +13,28 @@ def foo(slot):
     zed = y + x - z
     return "(0.1, {}), left".format(zed)
 
-def test():
+def bar():
+    # driver.execute_script("window.open('');")
+    driver.get('https://python.org')
+
+def start_selenium():
+    global driver
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
-    options.add_argument("--test-type")
-    options.binary_location = "/usr/bin/chromium"
-    # driver = webdriver.Chrome(chrome_options=options)
-    driver = webdriver.Chrome(executable_path=r"C:\Users\chromedriver.exe")
-    print(options)
-    driver.get('https://python.org')
+    path = "/Users/csalzsieder/chromedriver_win32/chromedriver"
+    driver = webdriver.Chrome(path, chrome_options=options)
 
 class CodeMappings(MappingRule):
     mapping = {  
-        'web test': Function(test),
+        'Start selenium': Function(start_selenium),
+        'web test': Function(bar),
         # Snippets
         'text snip': Text('text') + Pause('50') + Key('tab'),
         'key snip': Text('key') + Pause('50') + Key('tab'),
         'pause snip': Text('pau') + Pause('50') + Key('tab'),
 
         # open files
-        "Open pie": Key("c-k,c-o,a-d") + Pause('50') + Text('C:\NatLink\NatLink\MacroSystem') + Key("enter:2"),
+        "Open pie": Key("c-k,c-o,a-d") + Pause('50') + Text(R'C:\NatLink\NatLink\MacroSystem') + Key("enter:2"),
         "Open react": Key("c-k,c-o,a-d") + Pause('50') + Text(R"D:\GitProjects\react-components") + Key("enter:2"),
 
         # Editing

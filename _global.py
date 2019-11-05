@@ -1,5 +1,5 @@
 #imports the library
-
+from pywinauto.application import Application
 from dragonfly import (BringApp, StartApp, Function, Mimic, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
 
 def start_day():
@@ -9,6 +9,18 @@ def start_day():
     Mimic('connect', 'pre')
 
 prod_pass = "1qaz@WSX3edc$RFV"
+def connect_pre():
+    # app = Application().Start(R"C:\Windows\System32\notepad.exe", timeout=10)
+    # main_dlg = app.window(title='Untitled - Notepad')
+    StartApp(R"C:\Program Files (x86)\Pritunl\pritunl.exe").execute()
+    Pause("500").execute()
+    Mouse("(0.92, 0.1), left").execute()
+    Pause('100').execute()
+    Mouse("(0.92, 0.1), left").execute()
+    Pause('400').execute()
+    Text(prod_pass).execute()
+    Pause('50').execute()
+    Mouse("(0.75, 0.1), left").execute()
 
 class GlobalMappings(MappingRule):
     mapping = {  
@@ -70,7 +82,7 @@ class GlobalMappings(MappingRule):
             + Text(R'D:\GitProjects\react-components') + Key("enter, tab:8, enter"),
         #         "Open dry fly": Key("cs-o,a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
         # "Open MC API": Key("cs-o,a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
-        'connect pre': StartApp("C:\Program Files (x86)\Pritunl\pritunl.exe") + Pause("300") + Mouse("[0.57, 0.29], left") + Pause('50') + Mouse("[0.57, 0.29], left") + Pause('400') + Text(prod_pass) + Pause('50') + Mouse("[0.55, 0.29], left"),
+        'connect pre': Function(connect_pre),
         '[<number>] tab': Key('tab:%(number)d'),
         'Start day': Function(start_day),
 
