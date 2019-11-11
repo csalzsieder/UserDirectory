@@ -16,6 +16,8 @@ class CodeMappings(MappingRule):
         'chat': Key('c-2'),
         'Teams': Key('c-3'),
         'Calendar': Key('c-4'),
+        'snurch': Key('c-e'),
+        'goat': Key('c-g'),
         
     }
     extras=[

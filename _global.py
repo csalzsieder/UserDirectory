@@ -10,8 +10,6 @@ def start_day():
 
 prod_pass = "1qaz@WSX3edc$RFV"
 def connect_pre():
-    # app = Application().Start(R"C:\Windows\System32\notepad.exe", timeout=10)
-    # main_dlg = app.window(title='Untitled - Notepad')
     StartApp(R"C:\Program Files (x86)\Pritunl\pritunl.exe").execute()
     Pause("500").execute()
     Mouse("(0.92, 0.1), left").execute()
@@ -22,8 +20,15 @@ def connect_pre():
     Pause('50').execute()
     Mouse("(0.75, 0.1), left").execute()
 
+def connect_cisco():
+    app = Application().start(R"C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\vpnui.exe", timeout=10)
+    main_dlg = app.CiscoAnyConnectSecureMobilityClient
+    print('test')
+    print(main_dlg)
+    print('test1')
+
 class GlobalMappings(MappingRule):
-    mapping = {  
+    mapping = {
 		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
         'back space': Key('backspace'),
         'nip': Key('escape'),
@@ -37,6 +42,8 @@ class GlobalMappings(MappingRule):
         'up <number>': Key('up:%(number)d'),
         'ut': Key("pgup"),
         'dut': Key("pgdown"),
+        'ga': Key("enter"),
+        'Back tab': Key('s-tab'),
         'left [<number>]': Key('left:%(number)d'),
         'left <number> word': Key("ctrl:down, left:%(number)d, ctrl:up"),
         'right [<number>]': Key('right:%(number)d'),
@@ -54,6 +61,13 @@ class GlobalMappings(MappingRule):
         'line home [<number>]': Key("home") + Key("right:%(number)d"),
         'undo [<number>]': Key("c-z:%(number)d"),
         'redo [<number>]': Key("c-y:%(number)d"),
+        'window up': Key('win:down, up, win:up'),
+        'window right': Key('win:down, right, win:up'),
+        'window down': Key('win:down, down, win:up'),
+        'window left': Key('win:down, left, win:up'),
+        'copy it': Key('c-c'),
+        'cut it': Key('c-x'),
+        'paste it': Key('c-v'),
         'snap load': Key('w-4') + Pause("10") + Key('c-1') + Pause("10") + Key('f5') + Pause("10") + Key('a-tab'),
         
         'to files': Key("w-1"),

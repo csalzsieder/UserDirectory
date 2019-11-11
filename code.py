@@ -59,6 +59,7 @@ class CodeMappings(MappingRule):
 		'Save all': Key('c-k,s'),
 		'X open': Key('cs-e'),
 		'Text open': Key('cs-g'),
+		'Open tab': Key('c-n'),
 		'Sidebar': Key('c-b'),
         'find death': Key('sa-f12'),
 		'goat death': Key('f12'),

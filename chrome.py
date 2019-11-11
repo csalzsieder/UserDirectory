@@ -23,8 +23,9 @@ class GlobalChromeMappings(MappingRule):
         'print test': Function(foo),
         'close tab': Key('c-w'),
         'open tab': Key('c-t'),
+        'restore tab': Key('cs-t'),
         'duplicate tab': Key('y/25,t'),                  # vimium
-        'reopen tab': Key('cs-t'),
+        'last tab': Key('cs-t'),
         'book snap': Key('cs-b'),
         'book add': Key('c-d'),
         'nexty': Key('c-pgdown'),
@@ -51,6 +52,7 @@ class GlobalChromeMappings(MappingRule):
 
         # Common websites
         'Open Azure': Key("c-t") + Text("https://portal.azure.com/#home") + Key("enter"),
+        'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
         'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
         'open team city <pascal_text>': Key("c-t") + Text("http://teamcity.inspirato.com/project.html?projectId=%(pascal_text)s") + Key("enter"),
