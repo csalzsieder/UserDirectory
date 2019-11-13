@@ -1,5 +1,5 @@
 #imports the library
-from pywinauto.application import Application
+# from pywinauto.application import Application
 from dragonfly import (BringApp, StartApp, Function, Mimic, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
 
 def start_day():
@@ -9,6 +9,9 @@ def start_day():
     Mimic('connect', 'pre')
 
 prod_pass = "1qaz@WSX3edc$RFV"
+craig_pass = "conec#20"
+in_pass = "conec#23"
+
 def connect_pre():
     StartApp(R"C:\Program Files (x86)\Pritunl\pritunl.exe").execute()
     Pause("500").execute()
@@ -21,14 +24,16 @@ def connect_pre():
     Mouse("(0.75, 0.1), left").execute()
 
 def connect_cisco():
-    app = Application().start(R"C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\vpnui.exe", timeout=10)
-    main_dlg = app.CiscoAnyConnectSecureMobilityClient
-    print('test')
-    print(main_dlg)
-    print('test1')
+    StartApp(R"C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\vpnui.exe").execute()
+    Pause("100").execute()
+    Mouse("(0.85, 0.5), left").execute()
+    Pause("100").execute()
+    Text(in_pass).execute()
+    Key('enter').execute()
 
 class GlobalMappings(MappingRule):
-    mapping = {
+    mapping = {  
+        'connect cisco': Function(connect_cisco),
 		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
         'back space': Key('backspace'),
         'nip': Key('escape'),
@@ -81,9 +86,9 @@ class GlobalMappings(MappingRule):
         'to notepad': Key("w-8"),
         'to dragon': Key("w-9"),
         
-        'craig pass': Text("conec#20"),
-        'in pass': Text("conec#23"),
-        'Prod pass': Text("1qaz@WSX3edc$RFV"),
+        'craig pass': Text(craig_pass),
+        'in pass': Text(in_pass),
+        'Prod pass': Text(prod_pass),
         'Sand pass': Text("C0nec#20!!"),
         'in login': Text("csalzsieder@inspirato.com"),
         'in Username': Text("csalzsieder"),

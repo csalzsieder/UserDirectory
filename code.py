@@ -5,14 +5,6 @@ from selenium.webdriver.common.keys import Keys
 import time
 from dragonfly import (Function,Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mimic)
 
-def foo(slot):
-    t = int(slot)
-    x = .15
-    z = .05
-    y = (t*z)
-    zed = y + x - z
-    return "(0.1, {}), left".format(zed)
-
 def bar():
     # driver.execute_script("window.open('');")
     driver.get('https://python.org')
@@ -52,6 +44,7 @@ class CodeMappings(MappingRule):
         'line comment': Key("c-k,c-c"),
         'line uncomment': Key("c-k,c-u"),
         'tab <tab>': Key('a-%(tab)d'),
+        'Change language': Key('c-k,m'),
 
         # Navigation
         'previ': Key('c-pgup'),
@@ -64,8 +57,13 @@ class CodeMappings(MappingRule):
         'find death': Key('sa-f12'),
 		'goat death': Key('f12'),
         'Goat': Key('c-p'),
+        'Goat funk': Key('cs-o'),
+        'Goat prop': Key('cs-p'),
         'focus code': Key('c-j'),
         'close all': Key('c-k,w'),
+
+        # Commands
+        'Execute <text>': Key('cs-p') + Text('Execute %(text)s') + Key('enter'), #Query, selected
 
         # git 
         'get check out develop': Key("c-`,") + Pause("20") + Text("git co develop") + Key("enter"),
