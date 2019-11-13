@@ -29,6 +29,8 @@ class VisualStudioMappings(MappingRule):
         'goat': Key("c-t"),
         'X open': Key("ca-l"),
         'PM open': Key("alt,t,n,o"),
+        'tab select': Key('ctrl:down,tab'),
+        'pick <number>': Key('down:%(number)s, enter, ctrl:up'),
 
         # Debugging
         'step in': Key('f5'),
