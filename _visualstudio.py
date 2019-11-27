@@ -54,6 +54,9 @@ class VisualStudioMappings(MappingRule):
         'surround with': Key('c-e, c-u'),
         'line comment': Key('c-k,c-c'),
         'line uncomment': Key('c-k,c-u'),
+        'Replace all' : Key('a-a'),
+        'goat replace' : Key('c-h'),
+        'Clean code' : Key('c-e,c-f'),
 
         'add class': Key('ca-insert, down:6, enter'),
         'add controller': Key('ca-insert,enter'),
@@ -71,7 +74,8 @@ class VisualStudioMappings(MappingRule):
         'get push': Key("alt,t,n,o") + Text("git push") + Key("enter"),
         'get stash': Key("alt,t,n,o") + Text("git stash") + Key("enter"),
         'get stash <text>': Key("alt,t,n,o") + Text("git stash %(text)s") + Key("enter"), #drop/pop
-        'get commit <text>': Key("alt,t,n,o") + Text('git commit -am "%(text)s"'),
+        'get commit <text>': Key("alt,t,n,o") + Text('git add -A && git commit -m "%(text)s"'),
+        # 'get add': Key("alt,t,n,o") + Text('git add -A') + Key('enter'),
 
         # Snippets
         'Open snippets': Key('c-k,c-b'),

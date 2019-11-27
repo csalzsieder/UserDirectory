@@ -17,11 +17,14 @@ class IERule(MappingRule):
         "sort [headings]": Key("a-d, tab:4"),
 
         "goat dry fly": Key("a-d") + Text('D:\GitProjects\dryfly\FreeStone') + Key('enter'),
-        "goat Repo": Key("a-d") + Text('D:\GitProjects') + Key('enter'),
+        "goat code": Key("a-d") + Text('D:\GitProjects') + Key('enter'),
         "goat Funk": Key("a-d") + Text('D:\GitProjects\accommodation-tags-etl') + Key('enter'),
         "goat react": Key("a-d") + Text(R"D:\GitProjects\react-components") + Key('enter'),
+        "goat grammer": Key("a-d") + Text(R"C:\NatLink\NatLink\MacroSystem") + Key('enter'),
+        "goat grammer repo": Key("a-d") + Text(R"C:\NatLink\UserDirectory") + Key('enter'),
 
         "Open MC API": Key("a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
+        "Open pass": Key("a-d") + Text('D:\GitProjects\offering-list\OfferingList.sln') + Key('enter'),
         "Open funk": Key("a-d") + Text(R'D:\GitProjects\accommodation-tags-etl\AccommodationTagETL.sln') + Key('enter'),
         "code <dashtext> ": Key("a-d") + Text('D:\GitProjects\%(dashtext)s') + Key('enter'),
 

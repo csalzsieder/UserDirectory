@@ -3,7 +3,7 @@ from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dic
 
 class CodeMappings(MappingRule):
     mapping = {  
-		
+		'test code': Text('cd D:GitProjects')
         }
     extras=[
         Integer('tab', 1, 10),
@@ -11,8 +11,8 @@ class CodeMappings(MappingRule):
         Dictation("text")
     ]
 
-context = AppContext(executable='')
-grammar=Grammar('',context=context)
+context = AppContext(executable=R"C:\Program Files\Git\usr\bin\mintty.exe")
+grammar=Grammar('Bash',context=context)
 grammar.add_rule(CodeMappings())
 grammar.load()
 

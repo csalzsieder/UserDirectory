@@ -37,6 +37,8 @@ class GlobalMappings(MappingRule):
 		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
         'back space': Key('backspace'),
         'nip': Key('escape'),
+        'Spat': Key('space'),
+        'Dink': Key('delete'),
         'snap': Key('a-tab'),
         'snap hold': Key('alt:down, tab'),
         'pick': Key('enter,alt:up'),

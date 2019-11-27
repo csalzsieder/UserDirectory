@@ -18,6 +18,7 @@ class CodeMappings(MappingRule):
         'Calendar': Key('c-4'),
         'snurch': Key('c-e'),
         'goat': Key('c-g'),
+        'Filter': Key('cs-f'),
         
     }
     extras=[
