@@ -67,9 +67,8 @@ class CodeMappings(MappingRule):
         'Execute <text>': Key('cs-p') + Text('Execute %(text)s') + Key('enter'), #Query, selected
 
         # git 
-        'get check out develop': Key("c-`,") + Pause("20") + Text("git co develop") + Key("enter"),
-        'get check out feature': Key("c-`,") + Pause("20") + Text("git co feature/DF-"),
-        'get check out long feature': Key("c-`,") + Pause("20") + Text("git co feature/"),
+        'get check out develop': Key("c-`,") + Pause("20") + Text("git co develop && git pull") + Key("enter"),
+        'get check out feature': Key("c-`,") + Pause("20") + Text("git co feature/"),
         'get called release': Key("c-`,") + Text("git cob release/"),
         'get called feature': Key("c-`,") + Text("git cob feature/DF-"),
         'num var': Key("%,(,n,u,m,b,e,r,),d"),

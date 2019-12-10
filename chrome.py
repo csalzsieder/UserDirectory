@@ -50,6 +50,8 @@ class GlobalChromeMappings(MappingRule):
 		'BB Commits': Text('pc'),
 
         # Common websites
+        
+        'Open zoom': Key("c-t") + Text(R"https://zoom.us/j/6516749931") + Key("enter"),
         'Open Azure': Key("c-t") + Text("https://portal.azure.com/#home") + Key("enter"),
         'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
