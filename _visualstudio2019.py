@@ -3,7 +3,7 @@ from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key,
 
 def book_number(number):
     Key("c-k,c-w").execute()
-    Pause('10').execute()
+    Pause('30').execute()
     Key("home").execute() 
     stroke = "{}{}".format('down:',number-1)
     Key(stroke).execute()
@@ -17,7 +17,7 @@ class VisualStudioMappings(MappingRule):
         'Add Extension': Text('.cshtml'),
 
         # Bookmarks
-        'book <number>': Function(book_number),
+        'book <number>': Function(book_number),  
         'book snap': Key("c-k,c-k"),
         'book nexty': Key("c-k,c-n"),
         'book previ': Key("c-k,c-p"),
@@ -34,6 +34,7 @@ class VisualStudioMappings(MappingRule):
         'All ref': Key('c-f12'),
         'Format doc': Key('c-k,c-d'),
         'line <number>': Key("c-g") + Text("%(number)s") + Key("enter,end"),
+        'close tab': Key("c-f4"),
         'close all': Key("a-minus")+ Pause('50') + Key('a'),
         'close pinned': Key("a-minus")+ Pause('50') + Key('down:6, enter'),
         'pin tab': Key("a-minus")+ Pause('50') + Key('p'),
@@ -57,11 +58,12 @@ class VisualStudioMappings(MappingRule):
         'Run it': Key("f5"),
         'Attach <number>': Key("c-r,c-%(number)s"),
         'watch <number>': Key('ca-w,%(number)s'),
-        'tests run': Key('c-r,c-t'),
-        'test debug': Key('c-u,c-d'),
+        'tests run': Key('c-r,t'),
+        'test debug': Key('c-r') + Pause('20') + Key('c-t'),
         'Blossom': Key("cs-b"),
         'blessed load': Key("cs-b") + Pause('800') + Key('w-4') + Pause('50') + Key('c-1,f5') + Pause('50') + Key('w-6'),
         'Load web': Key('w-4') + Pause('50') + Key('c-1,f5') + Pause('50') + Key('w-6'),
+        'kill it': Key('s-f5'),
 
         # editing
         'Blossom': Key("cs-b"),
@@ -82,7 +84,8 @@ class VisualStudioMappings(MappingRule):
         'add Item': Key('cs-a'),
         'move up': Key('a-up'),
         'move down': Key('a-down'),
-        'code refactor': Key('c-.'),
+        'Loot': Key('c-.'),
+        'rename': Key('c-r,c-r'),
         
         # git 
         'get called <number> <dashtext>': Key("alt,t,n,o") + Text("git cob feature/DF-%(number)s-%(dashtext)s"),
