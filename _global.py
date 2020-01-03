@@ -1,16 +1,13 @@
 #imports the library
 # from pywinauto.application import Application
 from dragonfly import (BringApp, StartApp, Function, Mimic, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
+from passes import prod_pass, sand_pass, craig_pass, in_pass
 
 def start_day():
     # Mimic('open', 'dryfly')
     # Pause('500')
     Mimic('open', 'pie')
     Mimic('connect', 'pre')
-
-prod_pass = "1qaz@WSX3edc$RFV"
-craig_pass = "conec#20"
-in_pass = "conec#23"
 
 def connect_pre():
     StartApp(R"C:\Program Files (x86)\Pritunl\pritunl.exe").execute()
@@ -94,7 +91,7 @@ class GlobalMappings(MappingRule):
         'craig pass': Text(craig_pass),
         'in pass': Text(in_pass),
         'Prod pass': Text(prod_pass),
-        'Sand pass': Text("C0nec#20!!"),
+        'Sand pass': Text(sand_pass),
         'in login': Text("csalzsieder@inspirato.com"),
         'in Username': Text("csalzsieder"),
 
