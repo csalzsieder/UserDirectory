@@ -9,6 +9,11 @@ def book_number(number):
     Key(stroke).execute()
     Key('enter').execute()
 
+def key_stroke_number_minus_1(number):
+    stroke = "{}{}".format('down:',number-1)
+    Key(stroke).execute()
+    Key('enter').execute()
+
 class VisualStudioMappings(MappingRule):
     mapping = {  
         # temp
@@ -34,6 +39,7 @@ class VisualStudioMappings(MappingRule):
         'All ref': Key('c-f12'),
         'Format doc': Key('c-k,c-d'),
         'line <number>': Key("c-g") + Text("%(number)s") + Key("enter,end"),
+        'copy line <number>': Key("c-g") + Text("%(number)s") + Key("enter,home, shift:down, end, shift:up,c-c"),
         'close tab': Key("c-f4"),
         'close all': Key("a-minus")+ Pause('50') + Key('a'),
         'close pinned': Key("a-minus")+ Pause('50') + Key('down:6, enter'),
@@ -41,8 +47,10 @@ class VisualStudioMappings(MappingRule):
         'save all': Key("cs-s"),
         'delete line': Key("s-delete"),
         'Sink dock': Key("c-[,s"),
+        'Collapse all': Key("s-minus"),
         'goat': Key("c-t"),
         'goat to': Key("c-comma"),
+        'previ': Key("c-minus"),
         'X open': Key("ca-l"),
         'terminal open': Key("c-backslash,c-backslash"),
         'tab select': Key('ctrl:down,tab'),
@@ -55,14 +63,16 @@ class VisualStudioMappings(MappingRule):
         'step out': Key("s-f11"),
         'Break snap': Key("f9"),
         'Break view': Key("ca-b"),
+        'Break <number>': Key("ca-b,pgup") + Function(key_stroke_number_minus_1),
         'Run it': Key("f5"),
+        'Run to': Key("c-f10"),
         'Attach <number>': Key("c-r,c-%(number)s"),
         'watch <number>': Key('ca-w,%(number)s'),
         'tests run': Key('c-r,t'),
         'test debug': Key('c-r') + Pause('20') + Key('c-t'),
         'Blossom': Key("cs-b"),
         'blessed load': Key("cs-b") + Pause('800') + Key('w-4') + Pause('50') + Key('c-1,f5') + Pause('50') + Key('w-6'),
-        'Load web': Key('w-4') + Pause('50') + Key('c-1,f5') + Pause('50') + Key('w-6'),
+        'load web': Key('w-4') + Pause('50') + Key('c-1,f5') + Pause('50') + Key('w-6'),
         'kill it': Key('s-f5'),
         'fill sir': Key('c-;'),
 
@@ -80,7 +90,7 @@ class VisualStudioMappings(MappingRule):
         'Show info' : Key('c-k,c-i'),
         'zoom in' : Key('cs-<'),
         'zoom out' : Key('cs->'),
-        'add class': Key('ca-insert, down:6, enter'),
+        'add class': Key('c-insert, c-c'),
         'add controller': Key('ca-insert,enter'),
         'add Item': Key('cs-a'),
         'move up': Key('a-up'),
@@ -108,7 +118,7 @@ class VisualStudioMappings(MappingRule):
         # Snippets
         'Open snippets': Key('c-k,c-b'),
         'prop snip': Text('prop') + Key('tab:2'),
-        'See tour snip': Text('ctor') + Key('tab'),
+        'See tour snip': Text('ctor') + Key('tab:2'),
 
         # Opening solutions
         'Open solution': Key("cs-o"),

@@ -4,6 +4,8 @@ from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dic
 class CodeMappings(MappingRule):
     mapping = {  
             'run it': Key('c-enter'),
+            'x open': Key('c-backslash'),
+            'tab <tab>': Key('c-%(tab)d'),
         }
     extras=[
         Integer('tab', 1, 10),
