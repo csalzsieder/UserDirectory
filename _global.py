@@ -65,10 +65,12 @@ class GlobalMappings(MappingRule):
         'line home [<number>]': Key("home") + Key("right:%(number)d"),
         'undo [<number>]': Key("c-z:%(number)d"),
         'redo [<number>]': Key("c-y:%(number)d"),
-        'window up': Key('win:down, up, win:up'),
-        'window right': Key('win:down, right, win:up'),
-        'window down': Key('win:down, down, win:up'),
-        'window left': Key('win:down, left, win:up'),
+        'win up': Key('win:down, up, win:up'),
+        'win right': Key('win:down, right, win:up'),
+        'win down': Key('win:down, down, win:up'),
+        'win left': Key('win:down, left, win:up'),
+        'win search': Key('win:down, s, win:up'),
+        'wox [<text>]': Key('win:down, r, win:up') + Text('%(text)s'),
         'copy it': Key('c-c'),
         'cut it': Key('c-x'),
         'paste it': Key('c-v'),
@@ -78,13 +80,13 @@ class GlobalMappings(MappingRule):
         'to mail': Key("w-2"),
         'to Teams': Key("w-3"),
         'to Web': Key("w-4"),
-        # 'to pie': Key("w-5") + Pause('50') + Key("enter"),
-        'to pie': Key("w-5"),
+        'to pie': Key("w-5") + Pause('10') + Key("enter"),
+        # 'to pie': Key("w-5"),
         'to code': Key("win:down, 5, 5, win:up") + Pause('50') + Key("enter"),
         'to stud': Key("w-6"),
         'to data': Key("w-7"),
         'to post': Key("w-8"),
-        'to Commander': Key("w-9"),
+        'to power': Key("w-9"),
         # 'to dragon': Key("w-1,0"),
         # 'to Notepad': Key("w-11"),
         
@@ -93,7 +95,7 @@ class GlobalMappings(MappingRule):
         'Prod pass': Text(prod_pass),
         'Sand pass': Text(sand_pass),
         'in login': Text("csalzsieder@inspirato.com"),
-        'in Username': Text("csalzsieder"),
+        'in User': Text("csalzsieder"),
 
         'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
             + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
@@ -109,6 +111,10 @@ class GlobalMappings(MappingRule):
 
         # Temporary
         'flag it': Key("enter") + Text("//ToDo: DF-10303 remove unused fields, delete later") + Key("down,c-k,c-c"),
+
+        #postman
+        'Post run': Key("w-8") + Pause('10') + Key("c-enter,c-tab")
+
         }
 
     extras=[

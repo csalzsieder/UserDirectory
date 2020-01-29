@@ -2,8 +2,8 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse, Function)
 
 def calculateSlotNumber(number):
-    startingPoint = .27
-    increment = .048
+    startingPoint = .3
+    increment = .053
     calculation = (number*increment)
     slotNumber = (startingPoint + calculation) - increment
     Mouse("(0.3, {}), left".format(slotNumber)).execute()

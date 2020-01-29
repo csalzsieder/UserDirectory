@@ -21,7 +21,7 @@ class GlobalChromeMappings(MappingRule):
         'web test': Function(test),
         'print test': Function(foo),
         'close tab': Key('c-w'),
-        'open tab': Key('c-t'),
+        'open tab': Key('c-t, c-e'),
         'restore tab': Key('cs-t'),
         'duplicate tab': Key('y/25,t'),                  # vimium
         'last tab': Key('cs-t'),
@@ -39,7 +39,7 @@ class GlobalChromeMappings(MappingRule):
         'go back': Key('a-left'),
         'go forward': Key('a-right'),
         'load': Key('f5'),
-		'snurch': Key('a-d'),
+		'snurch': Key('c-l,c-e'),
 		'BB search': Text('/'),
 		'BB My work': Text('g,d'),
 		'BB sidebar': Text('['),
@@ -52,7 +52,9 @@ class GlobalChromeMappings(MappingRule):
         # Common websites
         
         'Open zoom': Key("c-t") + Text(R"https://zoom.us/j/6516749931") + Key("enter"),
+        'Open tech docs': Key("c-t") + Text(R"https://docs.google.com/document/d/1XVYzcH_kkqa6Wr13Z654RdRuJ1j0mVRVMgU8_XSiTx0/edit") + Key("enter"),
         'Open Azure': Key("c-t") + Text("https://portal.azure.com/#home") + Key("enter"),
+        'Open redis': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
         'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
         'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
         'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),

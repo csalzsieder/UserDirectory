@@ -51,6 +51,7 @@ class CodeMappings(MappingRule):
         'previ': Key('c-pgup'),
 		'nexty': Key('c-pgdown'), 
 		'Save all': Key('c-k,s'),
+		'Save': Key('c-s'),
 		'X open': Key('cs-e'),
 		'Text open': Key('cs-g'),
 		'Open tab': Key('c-n'),
@@ -62,6 +63,7 @@ class CodeMappings(MappingRule):
         'Goat prop': Key('cs-p'),
         'focus code': Key('c-j'),
         'close all': Key('c-k,w'),
+        'close tab': Key('c-f4'),
 
         # Commands
         'Execute <text>': Key('cs-p') + Text('Execute %(text)s') + Key('enter'), #Query, selected
@@ -76,6 +78,8 @@ class CodeMappings(MappingRule):
         'get merge <text>': Key("c-`") + Pause("20") + Text("git merge --%(text)s"), #Continue, abort
         'get merge develop': Key("c-`") + Text("git merge origin/develop") + Key('enter'),
         'get commit': Key("c-`") + Pause("10") + Text('git commit -am ""') + Pause("10") + Key('left'),
+        'get push': Key("c-`") + Pause("10") + Text('git push') + Pause("10") + Key('enter'),
+        'get pull': Key("c-`") + Pause("10") + Text('git pull') + Pause("10") + Key('enter'),
 
         # Builds
         'yarn <text>': Key("c-`") + Pause('10') + Text("yarn %(text)s") + Key("enter"), #install, lint, clean, build, dev
