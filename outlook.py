@@ -2,7 +2,7 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse, Function)
 
 def calculateSlotNumber(number):
-    startingPoint = .3
+    startingPoint = .35
     increment = .053
     calculation = (number*increment)
     slotNumber = (startingPoint + calculation) - increment

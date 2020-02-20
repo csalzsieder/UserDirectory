@@ -5,6 +5,9 @@ class CodeMappings(MappingRule):
     mapping = {  
             'run it': Key('c-enter'),
             'x open': Key('c-backslash'),
+            'close tab': Key('ca-w'),
+            'nexti': Key('cs-]'),
+            'previ': Key('cs-['),
             'tab <tab>': Key('c-%(tab)d'),
         }
     extras=[

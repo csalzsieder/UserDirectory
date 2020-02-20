@@ -77,7 +77,8 @@ class CodeMappings(MappingRule):
         'get checkout <text>': Key("c-`") + Text("git co %(text)s/"),
         'get merge <text>': Key("c-`") + Pause("20") + Text("git merge --%(text)s"), #Continue, abort
         'get merge develop': Key("c-`") + Text("git merge origin/develop") + Key('enter'),
-        'get commit': Key("c-`") + Pause("10") + Text('git commit -am ""') + Pause("10") + Key('left'),
+        'get commit': Key("c-`") + Pause("10") + Text('git commit -am ""') + Pause("10") +
+         Key('left'),
         'get push': Key("c-`") + Pause("10") + Text('git push') + Pause("10") + Key('enter'),
         'get pull': Key("c-`") + Pause("10") + Text('git pull') + Pause("10") + Key('enter'),
 

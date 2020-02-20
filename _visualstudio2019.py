@@ -83,8 +83,8 @@ class VisualStudioMappings(MappingRule):
 
         # editing
         'surround with': Key('c-k, c-s'),
-        'line comment': Key('c-k,c-c'),
-        'line uncomment': Key('c-k,c-u'),
+        'line nap': Key('c-k,c-c'),
+        'line nip': Key('c-k,c-u'),
         'Replace all' : Key('a-a'),
         'goat replace' : Key('c-h'),
         'Clean code' : Key('c-k,c-e'),

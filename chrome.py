@@ -2,7 +2,7 @@
 from selenium import webdriver
 import time
  
-from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation)  
+from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Pause)  
 
 def test():
     options = webdriver.ChromeOptions()
@@ -21,7 +21,7 @@ class GlobalChromeMappings(MappingRule):
         'web test': Function(test),
         'print test': Function(foo),
         'close tab': Key('c-w'),
-        'open tab': Key('c-t, c-e'),
+        'open tab': Key('c-t, f6:3') + Pause('30') + Key('cs-.'),
         'restore tab': Key('cs-t'),
         'duplicate tab': Key('y/25,t'),                  # vimium
         'last tab': Key('cs-t'),
@@ -52,6 +52,7 @@ class GlobalChromeMappings(MappingRule):
         # Common websites
         
         'Open zoom': Key("c-t") + Text(R"https://zoom.us/j/6516749931") + Key("enter"),
+        'Open pipes': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/PassList/_build") + Key("enter"),
         'Open tech docs': Key("c-t") + Text(R"https://docs.google.com/document/d/1XVYzcH_kkqa6Wr13Z654RdRuJ1j0mVRVMgU8_XSiTx0/edit") + Key("enter"),
         'Open Azure': Key("c-t") + Text("https://portal.azure.com/#home") + Key("enter"),
         'Open redis': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
@@ -61,7 +62,7 @@ class GlobalChromeMappings(MappingRule):
         'open team city <pascal_text>': Key("c-t") + Text("http://teamcity.inspirato.com/project.html?projectId=%(pascal_text)s") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
         'open bitbucket': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
-        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=301") + Key("enter"),
+        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=315&assignee=557058%3A17c5d830-0332-4496-a9bd-a99169a75113") + Key("enter"),
         'Open wiki': Key("c-t") + Text("https://inspirato.atlassian.net/wiki/spaces/IN/overview?mode=global") + Key("enter"),
         'Open Gmail': Key("c-t") + Text("https://mail.google.com/mail/u/0/#inbox") + Key("enter"),
         'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),
