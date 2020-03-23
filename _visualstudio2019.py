@@ -46,7 +46,7 @@ class VisualStudioMappings(MappingRule):
         'pin tab': Key("a-minus")+ Pause('50') + Key('p'),
         'save all': Key("cs-s"),
         'save it': Key("c-s"),
-        'delete line': Key("s-delete"),
+        'del line': Key("s-delete"),
         'Sink dock': Key("c-[,s"),
         'Collapse all': Key("s-minus"),
         'goat': Key("c-t"),
@@ -83,8 +83,8 @@ class VisualStudioMappings(MappingRule):
 
         # editing
         'surround with': Key('c-k, c-s'),
-        'line nap': Key('c-k,c-c'),
-        'line nip': Key('c-k,c-u'),
+        'line nip': Key('c-k,c-c'),
+        'line nap': Key('c-k,c-u'),
         'Replace all' : Key('a-a'),
         'goat replace' : Key('c-h'),
         'Clean code' : Key('c-k,c-e'),
@@ -97,6 +97,7 @@ class VisualStudioMappings(MappingRule):
         'move up': Key('a-up'),
         'move down': Key('a-down'),
         'Loot': Key('c-.'),
+        'Loot method': Key('c-r,c-m'),
         'rename': Key('c-r,c-r'),
         'copy down': Key('c-d'),
         

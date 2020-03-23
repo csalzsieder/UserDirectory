@@ -4,10 +4,14 @@ from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dic
 class CodeMappings(MappingRule):
     mapping = {  
             'run it': Key('c-enter'),
-            'x open': Key('c-backslash'),
+            'sidebar': Key('c-backslash'),
+            'line nip': Key('c-slash'),
             'close tab': Key('ca-w'),
-            'nexti': Key('cs-]'),
-            'previ': Key('cs-['),
+            'del line': Key('c-d'),
+            'nexti': Key('c-tab'),
+            'previ': Key('cs-tab'),
+            'Two pain': Key('ca-v'),
+            'rename': Key('c-e'),
             'tab <tab>': Key('c-%(tab)d'),
         }
     extras=[

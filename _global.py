@@ -113,7 +113,7 @@ class GlobalMappings(MappingRule):
         'flag it': Key("enter") + Text("//ToDo: DF-10303 remove unused fields, delete later") + Key("down,c-k,c-c"),
 
         #postman
-        'Post run': Key("w-8") + Pause('10') + Key("c-enter,c-tab")
+        'Post run': Key("w-8") + Pause('50') + Key("c-enter") + Pause('50') + Key("a-tab")
 
         }
 
