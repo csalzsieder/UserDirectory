@@ -39,7 +39,10 @@ class GlobalChromeMappings(MappingRule):
         'go back': Key('a-left'),
         'go forward': Key('a-right'),
         'load': Key('f5'),
-		'snurch': Key('c-l,c-e'),
+		'snurch': Key('a-d'),
+
+        #bit bucket
+		'BB all branches': Key('a-d') + Pause('10') + Key('end') + Text('?status=all') + Pause('20') + Key('enter'),
 		'BB search': Text('/'),
 		'BB My work': Text('g,d'),
 		'BB sidebar': Text('['),
@@ -50,25 +53,40 @@ class GlobalChromeMappings(MappingRule):
 		'BB Commits': Text('pc'),
 
         # Common websites
-        
         'Open zoom': Key("c-t") + Text(R"https://zoom.us/j/6516749931") + Key("enter"),
         'Open pipes': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/PassList/_build") + Key("enter"),
         'Open tech docs': Key("c-t") + Text(R"https://docs.google.com/document/d/1XVYzcH_kkqa6Wr13Z654RdRuJ1j0mVRVMgU8_XSiTx0/edit") + Key("enter"),
-        'Open Azure': Key("c-t") + Text("https://portal.azure.com/#home") + Key("enter"),
         'Open redis': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
+        'Open redis commands': Key("c-t") + Text("https://redis.io/commands") + Key("enter"),
         'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
-        'open team city': Key("c-t") + Text("http://teamcity.inspirato.com") + Key("enter"),
         'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
-        'open team city <pascal_text>': Key("c-t") + Text("http://teamcity.inspirato.com/project.html?projectId=%(pascal_text)s") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
-        'open bitbucket': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
-        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=318") + Key("enter"),
+        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=321") + Key("enter"),
         'Open wiki': Key("c-t") + Text("https://inspirato.atlassian.net/wiki/spaces/IN/overview?mode=global") + Key("enter"),
         'Open Gmail': Key("c-t") + Text("https://mail.google.com/mail/u/0/#inbox") + Key("enter"),
+        'Open load test': Key("c-t") + Text("https://app.k6.io/projects/3490751") + Key("enter"),
+
+        #azure
+        'Open Azure': Key("c-t") + Text("https://portal.azure.com/#@softwarelicensesinspirato.onmicrosoft.com/dashboard/private/a407531c-5b0b-4155-a704-5e4d3f777018") + Key("enter"),
+        'Open Azure red': Key("c-t") + Text(R'https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Cache%%2FRedis') + Key("enter"),
+        
+        # Bit bucket
+        'open bit': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
+        'open bit pass': Key("c-t") + Text("https://bitbucket.org/account/user/inspirato/projects/PL") + Key("enter"),
+        'open bit build': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-build/src/develop") + Key("enter"),
+        'open bit biz': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-business/src/develop/") + Key("enter"),
+        'open bit biz branches': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-business/branches/?status=all") + Key("enter"),
+        'open bit end': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-endpoints/src/develop") + Key("enter"),
+        'open bit end branches': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-endpoints/branches/?status=all") + Key("enter"),
+        'open bit up': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-update/src/develop") + Key("enter"),
+        
         'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),
         'Open ticket <number>': Key("c-t") + Text("https://inspirato.atlassian.net/browse/DF-%(number)d") + Key("enter"),
         'Open trunk': Key("c-t") + Text("https://dryfly-trunk.dev.inspirato.com") + Key("enter"),
         'Open JS snippets': Key("c-t") + Text("https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets") + Key("enter"),
+
+        # coding
+        'open snippets': Key("c-t") + Text("https://docs.microsoft.com/en-us/visualstudio/ide/visual-csharp-code-snippets?view=vs-2019") + Key("enter"),
 
         # Web console
         'open debugger': Key('f12'),

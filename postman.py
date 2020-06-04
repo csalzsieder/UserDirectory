@@ -13,6 +13,7 @@ class CodeMappings(MappingRule):
             'Two pain': Key('ca-v'),
             'rename': Key('c-e'),
             'tab <tab>': Key('c-%(tab)d'),
+            'save': Key('c-s'),
         }
     extras=[
         Integer('tab', 1, 10),
@@ -26,6 +27,7 @@ grammar.add_rule(CodeMappings())
 grammar.load()
 
 def unload():
+    
     global grammar
     if grammar: grammar.unload()
     grammar = None

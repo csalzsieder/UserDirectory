@@ -82,7 +82,7 @@ class VisualStudioMappings(MappingRule):
         'fill sir': Key('c-;'),
 
         # editing
-        'surround with': Key('c-k, c-s'),
+        'surround it': Key('c-k, c-s'),
         'line nip': Key('c-k,c-c'),
         'line nap': Key('c-k,c-u'),
         'Replace all' : Key('a-a'),
@@ -116,13 +116,28 @@ class VisualStudioMappings(MappingRule):
         'get stash': Key("c-backslash,c-backslash") + Text("git stash") + Key("enter"),
         'get stash <text>':Key("ca-l") + Key("c-backslash,c-backslash") + Text("git stash %(text)s") + Key("enter"), #drop/pop
         'get commit <text>':Key("ca-l") + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m "%(text)s"'),
+        'get commit':Key("ca-l") + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m ""') + Key('left'),
+        'get snap':Key("ca-l") + Key("c-backslash,c-backslash") + Text('git co @{-1}') + Key('left'),
         # 'get add': Key("c-backslash,c-backslash") + Text('git add -A') + Key('enter'),
         
 
         # Snippets
         'Open snippets': Key('c-k,c-b'),
-        'prop snip': Text('prop') + Key('tab:2'),
-        'See tour snip': Text('ctor') + Key('tab:2'),
+        'snip prop': Text('prop') + Key('tab:2'),
+        'snip g prop': Text('propg') + Key('tab:2'),
+        'snip See tour': Text('ctor') + Key('tab:2'),
+        'snip class': Text('class') + Key('tab:2'),
+        'snip try': Text('try') + Key('tab:2'),
+        'snip using': Text('using') + Key('tab:3'),
+        'snip meth': Text('method') + Key('tab:3'),
+        'snip v meth': Text('vmethod') + Key('tab:2'),
+        'snip s meth': Text('smethod') + Key('tab:2'),
+        'snip x meth': Text('xmethod') + Key('tab:2'),
+        'snip a meth': Text('amethod') + Key('tab:2'),
+        'snip as meth': Text('asmethod') + Key('tab:2'),
+        'par [<pascaltext>]': Text("var %(pascaltext)s = new "),
+        'car [<camel_text>]': Text("var %(pascaltext)s = new "),
+        'car foo': Text("var foo = new "),
 
         # Opening solutions
         'Open solution': Key("cs-o"),
@@ -134,6 +149,8 @@ class VisualStudioMappings(MappingRule):
         Dictation("text"),
         Dictation("dashtext", default="").lower().replace(" ", "-"),
         Dictation("nospace", default="").lower().replace(" ", ""),
+        Dictation("pascaltext", default="").title().replace(" ", ""),
+        Dictation("camel_text", default="").camel(),
     ]
 
 context = AppContext(executable='devenv')

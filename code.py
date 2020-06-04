@@ -28,6 +28,7 @@ class CodeMappings(MappingRule):
         # open files
         "Open pie": Key("c-k,c-o,a-d") + Pause('50') + Text(R'C:\NatLink\NatLink\MacroSystem') + Key("enter:2"),
         "Open react": Key("c-k,c-o,a-d") + Pause('50') + Text(R"D:\GitProjects\react-components") + Key("enter:2"),
+        "Open code": Key("c-k,c-o,a-d") + Pause('50') + Text(R"D:\GitProjects") + Key("enter:2"),
 
         # Editing
         'replace local': Key("c-h"),
@@ -40,10 +41,11 @@ class CodeMappings(MappingRule):
 		'Load web': Key('w-4') + Pause('50') + Key('f5') + Pause('50') + Key('w-5'),
         'copy line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end,c-c'),
         'select line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end'),
+        'select multi <number>': Key("shift:down, ctrl:down, alt:down, down:%(number)d, shift:up, ctrl:up, alt:up,"),
         'line <number>': Key('c-g') + Text('%(number)d') + Key('enter,end'),
         'line <number> <n>': Key('c-g') + Text('%(number)d') + Key('enter,end') + Key('left:%(n)d'),
-        'line comment': Key("c-k,c-c"),
-        'line uncomment': Key("c-k,c-u"),
+        'line nip': Key("c-k,c-c"),
+        'line nap': Key("c-k,c-u"),
         'tab <tab>': Key('a-%(tab)d'),
         'Change language': Key('c-k,m'),
 
@@ -64,12 +66,12 @@ class CodeMappings(MappingRule):
         'focus code': Key('c-j'),
         'close all': Key('c-k,w'),
         'close tab': Key('c-f4'),
-
         # Commands
         'Execute <text>': Key('cs-p') + Text('Execute %(text)s') + Key('enter'), #Query, selected
 
         # git 
-        'get check out develop': Key("c-`,") + Pause("20") + Text("git co develop && git pull") + Key("enter"),
+        'get check out develop': Key("cs-p") + Text('inter') + Key('enter') + Pause("20") + Text("git co develop && git pull") + Key("enter"),
+        'test': Key("cs-p") + Text('inter') + Key('enter'),
         'get check out feature': Key("c-`,") + Pause("20") + Text("git co feature/"),
         'get called release': Key("c-`,") + Text("git cob release/"),
         'get called feature': Key("c-`,") + Text("git cob feature/DF-"),
@@ -81,6 +83,7 @@ class CodeMappings(MappingRule):
          Key('left'),
         'get push': Key("c-`") + Pause("10") + Text('git push') + Pause("10") + Key('enter'),
         'get pull': Key("c-`") + Pause("10") + Text('git pull') + Pause("10") + Key('enter'),
+        'get branch': Key("c-`") + Pause("10") + Text('git branch -r') + Pause("10") + Key('enter'),
 
         # Builds
         'yarn <text>': Key("c-`") + Pause('10') + Text("yarn %(text)s") + Key("enter"), #install, lint, clean, build, dev

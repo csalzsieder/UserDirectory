@@ -16,7 +16,7 @@ def connect_pre():
     Pause('100').execute()
     Mouse("(0.92, 0.1), left").execute()
     Pause('400').execute()
-    Text(prod_pass).execute()
+    Text(sand_pass).execute()
     Pause('50').execute()
     Mouse("(0.75, 0.1), left").execute()
 
@@ -61,6 +61,8 @@ class GlobalMappings(MappingRule):
         'select up <number>': Key("end, shift:down, up:%(number)d, down, home, shift:up"),
         'select right <number>': Key("ctrl:down, shift:down, right:%(number)d, ctrl:up, shift:up"),
         'select left <number>': Key("ctrl:down, shift:down, left:%(number)d, ctrl:up, shift:up"),
+        'select all': Key("c-a"),
+        'copy all': Key("c-a,c-c"),
         'line end [<number>]': Key("end") + Key("left:%(number)d"),
         'line home [<number>]': Key("home") + Key("right:%(number)d"),
         'undo [<number>]': Key("c-z:%(number)d"),
@@ -70,6 +72,7 @@ class GlobalMappings(MappingRule):
         'win down': Key('win:down, down, win:up'),
         'win left': Key('win:down, left, win:up'),
         'win search': Key('win:down, s, win:up'),
+        'win snip': Key('win:down, s-s, win:up'),
         'wox [<text>]': Key('win:down, r, win:up') + Text('%(text)s'),
         'copy it': Key('c-c'),
         'cut it': Key('c-x'),
@@ -81,12 +84,16 @@ class GlobalMappings(MappingRule):
         'to Teams': Key("w-3"),
         'to Web': Key("w-4"),
         'to pie': Key("w-5") + Pause('10') + Key("enter"),
-        'to pie': Key("w-5"),
-        # 'to code': Key("win:down, 5, 5, win:up") + Pause('50') + Key("enter"),
-        'to stud': Key("w-6"),
+        # 'to pie': Key("w-5"),
+        'to code': Key("win:down, 5, 5, win:up") + Pause('50') + Key("enter"),
+        # 'to stud': Key("w-6") + Pause('10') + Key('enter'),
+        'to stud': Key("w-6") + Pause('10') + Key("enter"),
+        'to study': Key("win:down, 6, 6, win:up") + Pause('50') + Key("enter"),
+        'to studs': Key("win:down, 6, 6, 6, win:up") + Pause('50') + Key("enter"),
         'to data': Key("w-7"),
         'to post': Key("w-8"),
-        'to power': Key("w-9"),
+        'to shell': Key("w-9") + Pause('10') + Key("enter"),
+        'to notes': Key("w-0"),
         # 'to dragon': Key("w-1,0"),
         # 'to Notepad': Key("w-11"),
         
@@ -94,7 +101,8 @@ class GlobalMappings(MappingRule):
         'in pass': Text(in_pass),
         'Prod pass': Text(prod_pass),
         'Sand pass': Text(sand_pass),
-        'in login': Text("csalzsieder@inspirato.com"),
+        # 'test pass': Text(testy_pass),
+        'in email': Text("csalzsieder@inspirato.com"),
         'in User': Text("csalzsieder"),
 
         'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 

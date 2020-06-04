@@ -7,7 +7,9 @@ class CodeMappings(MappingRule):
 		'nexty': Key('c-pgdown'),  
         'Run it': Key("f5"),
         'close tab': Key('c-w'),
+        'new query': Key('c-n'),
         'line comment': Key("c-k,c-c"),
+        'select from': Text("SELECT * FROM")
         }
     extras=[
         Integer('tab', 1, 10),
