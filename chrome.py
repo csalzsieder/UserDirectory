@@ -40,6 +40,7 @@ class GlobalChromeMappings(MappingRule):
         'go forward': Key('a-right'),
         'load': Key('f5'),
 		'snurch': Key('a-d'),
+		'run it': Key('s-enter'),
 
         #bit bucket
 		'BB all branches': Key('a-d') + Pause('10') + Key('end') + Text('?status=all') + Pause('20') + Key('enter'),
@@ -59,7 +60,7 @@ class GlobalChromeMappings(MappingRule):
         'Open redis': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
         'Open redis commands': Key("c-t") + Text("https://redis.io/commands") + Key("enter"),
         'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
-        'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html") + Key("enter"),
+        'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html#key-names") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
         'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=321") + Key("enter"),
         'Open wiki': Key("c-t") + Text("https://inspirato.atlassian.net/wiki/spaces/IN/overview?mode=global") + Key("enter"),
@@ -69,6 +70,7 @@ class GlobalChromeMappings(MappingRule):
         #azure
         'Open Azure': Key("c-t") + Text("https://portal.azure.com/#@softwarelicensesinspirato.onmicrosoft.com/dashboard/private/a407531c-5b0b-4155-a704-5e4d3f777018") + Key("enter"),
         'Open Azure red': Key("c-t") + Text(R'https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Cache%%2FRedis') + Key("enter"),
+        'Open bricks': Key("c-t") + Text(R'https://adb-8131518869320383.3.azuredatabricks.net/?o=8131518869320383#notebook/2088104879611134/command/2480264226564932') + Key("enter"),
         
         # Bit bucket
         'open bit': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
@@ -79,6 +81,7 @@ class GlobalChromeMappings(MappingRule):
         'open bit end': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-endpoints/src/develop") + Key("enter"),
         'open bit end branches': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-endpoints/branches/?status=all") + Key("enter"),
         'open bit up': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-update/src/develop") + Key("enter"),
+        'open bit pipe': Key("c-t") + Text("https://bitbucket.org/inspirato/data-pipeline/src/master/") + Key("enter"),
         
         'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),
         'Open ticket <number>': Key("c-t") + Text("https://inspirato.atlassian.net/browse/DF-%(number)d") + Key("enter"),
@@ -91,8 +94,8 @@ class GlobalChromeMappings(MappingRule):
         # Web console
         'open debugger': Key('f12'),
         'goat': Key('c-p'),
-        'run it': Key('f8'),
-        'step over': Key('s-f11'),
+        # 'run it': Key('f8'),
+        'step over': Key('s-f11'),                      
         'step in': Key('f11'),
         'step out': Key('f10'),
         'elements tab': Key('c-1'),

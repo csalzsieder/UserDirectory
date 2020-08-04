@@ -1,5 +1,12 @@
 #imports the library
-from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause)
+from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Function)
+
+def repeat(number):
+    s = 'cd '
+    for i in range(0, number):
+            s += '../'
+    
+    Text('{}'.format(s)).execute()
 
 class CodeMappings(MappingRule):
     mapping = {  
@@ -10,7 +17,14 @@ class CodeMappings(MappingRule):
 		    'close tab': Key('c-w'), 
 		    'kill it': Key('c-c'), 
 		    'exit': Text('exit') + Key('enter'), 
+		    'build Wheel': Text('buildWheel.sh') + Key('enter'), 
+		    'load Wheel': Text('loadWheelToCluster.sh') + Key('enter'), 
 		    'again': Key('up,enter'), 
+		    'back <number>': Function(repeat) + Key('enter'),
+            'list': Text('ls') + Key('enter'),
+            'cd <lowtext>': Text('cd %(lowtext)s') + Key('enter'),
+            'cd passlist': Text('cd workspace/passlist') + Key('enter'),
+            'cd source': Text('cd gitprojects/data-pipeline/workspace/passlist') + Key('enter'),
             
             # Commands
 
@@ -39,7 +53,8 @@ class CodeMappings(MappingRule):
     extras=[
         Integer('tab', 1, 10),
         Integer('number', 1, 9999),
-        Dictation("text")    
+        Dictation("text"),
+        Dictation("lowtext", default="").lower(), 
     ]
 
 context = AppContext(executable='ConEmu64')

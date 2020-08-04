@@ -54,7 +54,7 @@ class VisualStudioMappings(MappingRule):
         'previ': Key("c-minus"),
         'Sea view': Key("ca-l"),
         'team view': Key("c-backslash,c-m"),
-        'term view': Key("c-backslash,c-backslash"),
+        'shell view': Key("c-backslash,c-backslash"),
         'air view': Key("c-backslash,c-e"),
         'tab select': Key('ctrl:down,tab'),
         'next wrath': Key('cs-down'),
@@ -69,11 +69,13 @@ class VisualStudioMappings(MappingRule):
         'Break <number>': Key("ca-b,pgup") + Function(key_stroke_number_minus_1),
         'Run it': Key("f5"),
         'Run to': Key("c-f10"),
+        
         'Attach <number>': Key("c-r,c-%(number)s"),
         'watch <number>': Key('ca-w,%(number)s'),
-        'tests run': Key('c-r,a'),
-        'test debug': Key('c-r') + Pause('20') + Key('c-t'),
-        'test view': Key('c-e') + Pause('20') + Key('c-t'),
+        'test debug': Key('c-r') + Pause('20') + Key('t'),
+        'test last': Key('c-r') + Pause('20') + Key('d'),
+        'test view': Key('c-e') + Pause('20') + Key('t'),
+        'test all': Key('c-r') + Pause('20') + Key('a'),
         'Blossom': Key("cs-b"),
         'blessed load': Key("cs-b") + Pause('800') + Key('w-4') + Pause('50') + Key('c-1,f5') + Pause('50') + Key('w-6'),
         'load web': Key('w-4') + Pause('50') + Key('c-1,f5') + Pause('50') + Key('w-6'),
@@ -117,6 +119,7 @@ class VisualStudioMappings(MappingRule):
         'get stash <text>':Key("ca-l") + Key("c-backslash,c-backslash") + Text("git stash %(text)s") + Key("enter"), #drop/pop
         'get commit <text>':Key("ca-l") + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m "%(text)s"'),
         'get commit':Key("ca-l") + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m ""') + Key('left'),
+        'get commit whip':Key("ca-l") + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m "wip"') + Key('left') + Key("enter"),
         'get snap':Key("ca-l") + Key("c-backslash,c-backslash") + Text('git co @{-1}') + Key('left'),
         # 'get add': Key("c-backslash,c-backslash") + Text('git add -A') + Key('enter'),
         

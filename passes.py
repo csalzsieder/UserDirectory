@@ -1,4 +1,5 @@
 prod_pass = "C0nec#26!!."
-sand_pass = "C0nec#26!!."
+sand_pass = "7E7t7&gPPGmo"
 craig_pass = "conec#20"
-in_pass = "conec#23"
+in_pass = "conec#24"
+# testy_pass = "Inspirato01"
