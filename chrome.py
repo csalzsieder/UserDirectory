@@ -21,7 +21,7 @@ class GlobalChromeMappings(MappingRule):
         'web test': Function(test),
         'print test': Function(foo),
         'close tab': Key('c-w'),
-        'open tab': Key('c-t') + Pause('30') + Key('f6:3') + Pause('30') + Key('cs-.'),
+        'open tab': Key('c-t') + Pause('30') + Key('f6:3') + Pause('50') + Key('cs-.'),
         'restore tab': Key('cs-t'),
         'duplicate tab': Key('y/25,t'),                  # vimium
         'last tab': Key('cs-t'),
@@ -39,7 +39,7 @@ class GlobalChromeMappings(MappingRule):
         'go back': Key('a-left'),
         'go forward': Key('a-right'),
         'load': Key('f5'),
-		'snurch': Key('a-d'),
+		'snurch': Key('cs-.'),
 		'run it': Key('s-enter'),
 
         #bit bucket
@@ -57,8 +57,8 @@ class GlobalChromeMappings(MappingRule):
         'Open zoom': Key("c-t") + Text(R"https://zoom.us/j/6516749931") + Key("enter"),
         'Open pipes': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/PassList/_build") + Key("enter"),
         'Open tech docs': Key("c-t") + Text(R"https://docs.google.com/document/d/1XVYzcH_kkqa6Wr13Z654RdRuJ1j0mVRVMgU8_XSiTx0/edit") + Key("enter"),
-        'Open redis': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
-        'Open redis commands': Key("c-t") + Text("https://redis.io/commands") + Key("enter"),
+        'Open commander': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
+        'Open redis': Key("c-t") + Text("https://redis.io/commands") + Key("enter"),
         'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
         'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html#key-names") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),

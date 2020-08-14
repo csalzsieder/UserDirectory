@@ -14,7 +14,7 @@ class CodeMappings(MappingRule):
         'crag test snip': Text('text'),
         'key snip': Text('key') + Pause('50') + Key('tab'),
         'pause snip': Text('pau') + Pause('50') + Key('tab'),
-        'pie def': Text('df'),
+        'pie def': Text('def'),
         'in com': Text('# COMMAND ----------'),
 
         # Python
@@ -23,7 +23,7 @@ class CodeMappings(MappingRule):
 
         # debugging
         'run it': Key("c-f5"),
-        'debug it': Key("f5"),
+        'bugger': Key("f5"),
         'play it': Key("csa-f5"),
         'kill it': Key("s-f5"),
         # 'restart': Key("cs-f5"),
@@ -60,10 +60,12 @@ class CodeMappings(MappingRule):
         'py file': Key('csa-n'),
         'py package': Key('csa-p'),
         'py con': Key('csa-p'),
+        'bug con': Key('csa-r'),
         'loot': Key('c-.'),
 
         # Navigation
         'snurch': Key('cs-f'),
+        'snurch win': Key('csa-y'),
         'previ': Key('c-pgup'),
         'nexty': Key('c-pgdown'), 
         'Save all': Key('c-k,s'),
@@ -78,13 +80,14 @@ class CodeMappings(MappingRule):
         'commit view': Key('csa-q'),
         'term view': Key('csa-t'),
         'sigh view': Key('csa-s'),
-        'sigh lie': Text('.limit(10).toPandas()'),
+        'sigh pan': Text('.limit(50).toPandas()') + Key('enter'),
 
         'Open tab': Key('c-n'),
         'book snap': Key('c-f11'),
         'find death': Key('sa-f12'),
-        'goat death': Key('f12'),
+        'goat in': Key('f12'),
         'Goat': Key('c-p'),
+        'Goater': Key('c-r'),
         'Goat funk': Key('cs-o'),
         'Goat prop': Key('cs-p'),
         'close all': Key('c-k, c-w'),
@@ -100,7 +103,7 @@ class CodeMappings(MappingRule):
         'Execute <text>': Key('cs-p') + Text('Execute %(text)s') + Key('enter'), #Query, selected
 
         # git 
-        'get check out develop': Function(gitPause) + Text("git co develop && git pull") + Key("enter"),
+        'get check out master': Function(gitPause) + Text("git co master && git pull") + Key("enter"),
         'get check out feature': Function(gitPause) + Text("git co feature/"),
         'get called release': Function(gitPause) + Text("git cob release/"),
         'get called feature': Function(gitPause) +  Text("git cob feature/DF-"),

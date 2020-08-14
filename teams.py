@@ -19,6 +19,7 @@ class CodeMappings(MappingRule):
         'snurch': Key('c-e'),
         'goat': Key('c-g'),
         'Filter': Key('cs-f'),
+        '<text>': Text("%(text)s"),
         
     }
     extras=[

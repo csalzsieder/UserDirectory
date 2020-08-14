@@ -54,6 +54,7 @@ class GlobalMappings(MappingRule):
         'right dub <number>': Key("ctrl:down, right:%(number)d, ctrl:up"),
         "camel [under] <camel_text>": Text("%(under)s%(camel_text)s"),
         "snake [<under>] <snaketext>": Text("%(under)s%(snaketext)s"),
+        "low <lowtext>": Text("%(lowtext)s"),
         "dash [<dash>] <dashtext>": Text("%(dash)s%(dashtext)s"),
         "paschal [<pascaltext>]": Text("%(pascaltext)s"),
         "title [<titletext>]": Text("%(titletext)s"),
@@ -75,7 +76,6 @@ class GlobalMappings(MappingRule):
         'win left': Key('win:down, left, win:up'),
         'win search': Key('win:down, s, win:up'),
         'win snip': Key('win:down, s-s, win:up'),
-        'wox [<text>]': Key('win:down, r, win:up') + Text('%(text)s'),
         'copy': Key('c-c'),
         'cut': Key('c-x'),
         'paste': Key('c-v'),
@@ -97,9 +97,9 @@ class GlobalMappings(MappingRule):
         'to py': Key("w-5"),
         'to code': Key("w-6"),
         # 'to code': Key("win:down, 5, 5, win:up") + Pause('50') + Key("enter"),
-        'to stud': Key("w-7"),
-        # 'to stud': Key("w-6") + Pause('10') + Key("enter"),
-        # 'to study': Key("win:down, 6, 6, win:up") + Pause('50') + Key("enter"),
+        # 'to stud': Key("w-7"),
+        'to stud': Key("w-7") + Pause('10') + Key("enter"),
+        'to study': Key("win:down, 7, 7, win:up") + Pause('50') + Key("enter"),
         
         # 'to studs': Key("win:down, 6, 6, 6, win:up") + Pause('50') + Key("enter"),
         # 'to data': Key("w-7"),
@@ -150,6 +150,7 @@ class GlobalMappings(MappingRule):
         # e.g. hello_world.
         Dictation("snaketext", default="").lower().replace(" ", "_"),
         Dictation("dashtext", default="").lower().replace(" ", "-"),
+        Dictation("lowtext", default="").lower(),
         # Define a Dictation element that produces text matching Python's
         # class casing, e.g. DictationContainer.
         Dictation("pascaltext", default="").title().replace(" ", ""),
@@ -157,6 +158,7 @@ class GlobalMappings(MappingRule):
         # Allow adding underscores before cased text.
         Choice("under", {"under": "_"}, default=""),
         Choice("dash", {"dash": "-"}, default=""),
+        
         Dictation("text")
     ]
 

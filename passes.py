@@ -1,5 +1,5 @@
-prod_pass = "C0nec#26!!."
-sand_pass = "7E7t7&gPPGmo"
+prod_pass = "7RBQ64fs3lte8U"
+sand_pass = "7RBQ64fs3lte8U"
 craig_pass = "conec#20"
 in_pass = "conec#24"
 # testy_pass = "Inspirato01"
