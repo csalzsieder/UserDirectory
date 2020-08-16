@@ -1,6 +1,7 @@
 2#imports the library
 from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
 
+
 def calculateSlotNumber(number):
     startingPoint = .15
     increment = .048
@@ -19,7 +20,7 @@ class CodeMappings(MappingRule):
         'snurch': Key('c-e'),
         'goat': Key('c-g'),
         'Filter': Key('cs-f'),
-        '<text>': Text("%(text)s"),
+        '<text>': Text("%(text)s "),
         
     }
     extras=[
