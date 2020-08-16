@@ -40,6 +40,7 @@ class GlobalChromeMappings(MappingRule):
         'go forward': Key('a-right'),
         'load': Key('f5'),
 		'snurch': Key('cs-.'),
+		'pie snurch': Key('a-d') + Text('python pyspark '),
 		'run it': Key('s-enter'),
 
         #bit bucket

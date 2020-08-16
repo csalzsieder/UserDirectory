@@ -80,6 +80,7 @@ class CodeMappings(MappingRule):
         'commit view': Key('csa-q'),
         'term view': Key('csa-t'),
         'sigh view': Key('csa-s'),
+        'sigh view': Key('csa-y'),
         'sigh pan': Text('.limit(50).toPandas()') + Key('enter'),
 
         'Open tab': Key('c-n'),
