@@ -1,5 +1,5 @@
 #imports the library
-from selenium import webdriver
+# from selenium import webdriver
 import time
  
 from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Pause)  
@@ -40,7 +40,8 @@ class GlobalChromeMappings(MappingRule):
         'go forward': Key('a-right'),
         'load': Key('f5'),
 		'snurch': Key('cs-.'),
-		'pie snurch': Key('a-d') + Text('python pyspark '),
+		'pie snurch': Key('a-d') + Pause('20') + Text('python pyspark '),
+		'goat bar': Key('a-d, c-c'),
 		'run it': Key('s-enter'),
 
         #bit bucket
@@ -61,17 +62,21 @@ class GlobalChromeMappings(MappingRule):
         'Open commander': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
         'Open redis': Key("c-t") + Text("https://redis.io/commands") + Key("enter"),
         'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
-        'Open pie docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html#key-names") + Key("enter"),
+        'Open fly docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html#key-names") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
         'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=321") + Key("enter"),
         'Open wiki': Key("c-t") + Text("https://inspirato.atlassian.net/wiki/spaces/IN/overview?mode=global") + Key("enter"),
         'Open Gmail': Key("c-t") + Text("https://mail.google.com/mail/u/0/#inbox") + Key("enter"),
         'Open load test': Key("c-t") + Text("https://app.k6.io/projects/3490751") + Key("enter"),
+        'open notes': Key("c-t") + Text("https://docs.google.com/document/d/1UpkG04_QhrmELH0qUvN0CCuXheeoAZqq4Ij0ZJvl6ag/edit") + Key("enter"),
+        'open lake': Key("c-t") + Text(R"https://portal.azure.com/#blade/Microsoft_Azure_Storage/ContainerMenuBlade/overview/storageAccountId/%2Fsubscriptions%2Fc22e7019-2735-41cf-8a4d-3a887aa2cbac%2FresourceGroups%2Frg-datapipelines-sb%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fdlsdatapipelinessb/path/passlist/etag/%220x8D86AF6914772FD%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride//defaultId//publicAccessVal/None") + Key("enter"),
+
 
         #azure
         'Open Azure': Key("c-t") + Text("https://portal.azure.com/#@softwarelicensesinspirato.onmicrosoft.com/dashboard/private/a407531c-5b0b-4155-a704-5e4d3f777018") + Key("enter"),
         'Open Azure red': Key("c-t") + Text(R'https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Cache%%2FRedis') + Key("enter"),
         'Open bricks': Key("c-t") + Text(R'https://adb-8131518869320383.3.azuredatabricks.net/?o=8131518869320383#notebook/2088104879611134/command/2480264226564932') + Key("enter"),
+        'Open pie spark': Key("c-t") + Text(R'https://spark.apache.org/docs/latest/api/python/index.html') + Key("enter"),
         
         # Bit bucket
         'open bit': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
@@ -87,10 +92,12 @@ class GlobalChromeMappings(MappingRule):
         'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),
         'Open ticket <number>': Key("c-t") + Text("https://inspirato.atlassian.net/browse/DF-%(number)d") + Key("enter"),
         'Open trunk': Key("c-t") + Text("https://dryfly-trunk.dev.inspirato.com") + Key("enter"),
-        'Open JS snippets': Key("c-t") + Text("https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets") + Key("enter"),
+        # 'Open JS snippets': Key("c-t") + Text("https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets") + Key("enter"),
 
+        # Jira
+        'create ticket': Key("c-t") + Text("https://inspirato.atlassian.net/secure/CloneIssueDetails!default.jspa?id=175277") + Key("enter"),
         # coding
-        'open snippets': Key("c-t") + Text("https://docs.microsoft.com/en-us/visualstudio/ide/visual-csharp-code-snippets?view=vs-2019") + Key("enter"),
+        # 'open snippets': Key("c-t") + Text("https://docs.microsoft.com/en-us/visualstudio/ide/visual-csharp-code-snippets?view=vs-2019") + Key("enter"),
 
         # Web console
         'open debugger': Key('f12'),

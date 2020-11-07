@@ -11,6 +11,7 @@ def calculateSlotNumber(number):
 class CodeMappings(MappingRule):
     mapping = {
         'Slot <number>': Function(calculateSlotNumber),
+        'new message': Key('c-n'),
 		
         }
     extras=[

@@ -3,8 +3,8 @@ from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key,
 
 
 def calculateSlotNumber(number):
-    startingPoint = .15
-    increment = .048
+    startingPoint = .20
+    increment = .058
     calculation = (number*increment)
     slotNumber = (startingPoint + calculation) - increment
     Mouse("(0.1, {}), left".format(slotNumber)).execute()
@@ -12,7 +12,7 @@ def calculateSlotNumber(number):
 
 class CodeMappings(MappingRule):
     mapping = {  
-        'Slot <number>': Function(calculateSlotNumber),
+        'tab <number>': Function(calculateSlotNumber),
         'Activity': Key('c-1'),
         'chat': Key('c-2'),
         'Teams': Key('c-3'),
@@ -20,6 +20,8 @@ class CodeMappings(MappingRule):
         'snurch': Key('c-e'),
         'goat': Key('c-g'),
         'Filter': Key('cs-f'),
+        'snooze': Key('csa-slash'),
+        'make call': Key('cs-c') + Key('csa-slash'),
         '<text>': Text("%(text)s "),
         
     }

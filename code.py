@@ -1,7 +1,7 @@
 #imports the library
 import os
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+# from selenium import webdriver
+# from selenium.webdriver.common.keys import Keys
 import time
 from dragonfly import (Function,Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mimic)
 
@@ -19,9 +19,9 @@ def start_selenium():
 class CodeMappings(MappingRule):
     mapping = {  
         # Snippets
-        'text snip': Text('text') + Pause('50') + Key('tab'),
-        'key snip': Text('key') + Pause('50') + Key('tab'),
-        'pause snip': Text('pau') + Pause('50') + Key('tab'),
+        'text snip': Text("Text('')") + Pause('30') + Key('left:2'),
+        'key snip': Text("Key('')") + Pause('30') + Key('left:2'),
+        'pause snip': Text("Pause('')") + Pause('30') + Key('left:2'),
         'pie def': Text('df'),
         'in com': Text('# COMMAND ----------'),
 
@@ -48,7 +48,6 @@ class CodeMappings(MappingRule):
 		'replace global': Key("cs-h"),
         'back space': Key('backspace'),
         'Div <text>': Text('<div>%(text)s</div>'),
-        'Open folder': Key('c-k,c-o'),
         'New copy': Key('c-c,c-v'),
         'copy down': Key('sa-down'),
 		'Load web': Key('w-4') + Pause('50') + Key('f5') + Pause('50') + Key('w-5'),
@@ -58,8 +57,8 @@ class CodeMappings(MappingRule):
         # 'line <number>': Key('c-g') + Pause('5') + Text('%(number)d'),
         'line <number>': Key('c-g') + Text('%(number)d') + Key('enter,end'),
         # 'line <number> <n>': Key('c-g') + Text('%(number)d') + Key('enter,end') + Key('left:%(n)d'),
-        'oink': Key("c-k,c-c"),
-        'meow': Key("c-k,c-u"),
+        'zap': Key("c-k,c-c"),
+        'zip': Key("c-k,c-u"),
         'del line': Key("s-delete"),
         'tab <tab>': Key('a-%(tab)d'),
         'Change language': Key('c-k,m'),

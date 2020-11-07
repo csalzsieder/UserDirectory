@@ -1,5 +1,5 @@
 #imports the library
-from selenium import webdriver
+# from selenium import webdriver
 import time
  
 from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Pause)  
@@ -23,7 +23,7 @@ class CodeMappings(MappingRule):
         'go back': Key('a-left'),
         'go forward': Key('a-right'),
         'load': Key('f5'),
-        'snurch': Key('a-d'),
+        'snurch': Key('c-l'),
         
 
         # code - bricks
@@ -32,8 +32,8 @@ class CodeMappings(MappingRule):
         'run it': Key('s-enter'), 
         'run up': Key('sa-up'), 
         'run down': Key('sa-down'), 
-        'nexty': Key('cs-tab'),
-        'previ': Key('c-tab'),
+        'nexty': Key('c-pgdown'),
+        'previ': Key('c-pgup'),
         'insert up': Key('ca-p'),
         'insert down': Key('ca-n'),
         'insert display': Key('ca-p') + Pause('100') + Text('display('),
@@ -46,6 +46,7 @@ class CodeMappings(MappingRule):
         'indent me': Key('c-]'),
         'dedent me': Key('c-['),
         'find me': Key('ca-f'),
+        'paste wheel': Text('dbfs:/FileStore/jars/passlist-1.0.0-py3-none-any.whl'),
         
 
         #snippets
@@ -58,7 +59,7 @@ class CodeMappings(MappingRule):
         'snip select': Text(".select("),
 
         #azure
-        'Open bricks': Key("c-t") + Text(R'https://adb-8131518869320383.3.azuredatabricks.net/?o=8131518869320383#notebook/4216421899519900/command/4216421899519908') + Key("enter"),
+        'Open bricks': Key("c-t") + Text(R'https://adb-190398843147329.9.azuredatabricks.net/login.html?o=190398843147329#') + Key("enter"),
     }
     extras=[
         Integer('tab', 1, 10),
@@ -67,7 +68,7 @@ class CodeMappings(MappingRule):
         Dictation("pascal_text", default="").title().replace(" ", ""),
     ]
 
-context = AppContext(executable='msedge')
+context = AppContext(executable='firefox')
 grammar=Grammar('Edge',context=context)
 grammar.add_rule(CodeMappings())
 grammar.load()

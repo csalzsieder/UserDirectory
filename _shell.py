@@ -34,9 +34,10 @@ class CodeMappings(MappingRule):
             'dock start': Text('docker start'),
             'dock stop': Text('docker stop'),
             'dock logs': Text('docker logs'),
-            'dock to red': Text('docker exec -it devredis sh') + Key('enter'),
-            'dock red': Text('docker run --name devredis -p 6379:6379 -d redis') + Key('enter'),
-            'dock start red': Text('docker start devredis') + Key('enter'),
+            'dock compose': Key('sa-1') + Pause('200') + Text('docker-compose up') + Key('enter'),
+            'dock to red': Text('docker exec -it redis sh') + Key('enter'),
+            'dock red': Text('docker run --name redis -p 6379:6379 -d redis') + Key('enter'),
+            'dock start red': Text('docker start redis') + Key('enter'),
 
             #redis
             'b <number>': Text('b %(number)d') + Key('enter'),
@@ -57,8 +58,8 @@ class CodeMappings(MappingRule):
         Dictation("lowtext", default="").lower(), 
     ]
 
-context = AppContext(executable='ConEmu64')
-grammar=Grammar('Powershell',context=context)
+context = AppContext(executable=R'C:\Users\csalzsieder\Downloads\cmder\vendor\conemu-maximus5\ConEmu64.exe')
+grammar=Grammar('Shell',context=context)
 grammar.add_rule(CodeMappings())
 grammar.load()
 

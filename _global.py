@@ -32,10 +32,11 @@ class GlobalMappings(MappingRule):
     mapping = {  
         'connect cisco': Function(connect_cisco),
 		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
-        'back space': Key('backspace'),
+        'bat': Key('backspace'),
         'nip': Key('escape'),
         'Spat': Key('space'),
-        'Dink': Key('delete'),
+        'Dink': Key('delete'), 
+        'Dunk': Key('s-delete'), 
         'snap': Key('a-tab'),
         'snap hold': Key('alt:down, tab'),
         'pick': Key('enter,alt:up'),
@@ -84,7 +85,7 @@ class GlobalMappings(MappingRule):
         'to home': Key('home'),
         'quote': Key('squote'),
         'comma': Key('comma'),
-        
+        'snooze': Key('csa-slash'),
         'snap load': Key('w-4') + Pause("10") + Key('c-1') + Pause("10") + Key('f5') + Pause("10") + Key('a-tab'),
         
         'to files': Key("w-1"),
@@ -122,12 +123,15 @@ class GlobalMappings(MappingRule):
         'in email': Text("csalzsieder@inspirato.com"),
         'in User': Text("csalzsieder"),
 
-        'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
-            + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
-            + Text(R'C:\NatLink\NatLink\MacroSystem') + Key("enter, tab:8, enter"),
-        'open react': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
-            + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
-            + Text(R'D:\GitProjects\react-components') + Key("enter, tab:8, enter"),
+
+        'open dock' : Key('win,s') + Pause('20') + Text('docker') + Pause('20') + Key('enter'),
+
+        # 'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
+        #     + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
+        #     + Text(R'C:\NatLink\NatLink\MacroSystem') + Key("enter, tab:8, enter"),
+        # 'open react': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
+        #     + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
+        #     + Text(R'D:\GitProjects\react-components') + Key("enter, tab:8, enter"),
         #         "Open dry fly": Key("cs-o,a-d") + Text('D:\GitProjects\dryfly\FreeStone\DryFly.sln') + Key('enter'),
         # "Open MC API": Key("cs-o,a-d") + Text('D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
         'connect pre': Function(connect_pre),
