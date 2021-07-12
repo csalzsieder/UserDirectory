@@ -41,7 +41,7 @@ class GlobalChromeMappings(MappingRule):
         'load': Key('f5'),
 		'snurch': Key('cs-.'),
 		'pie snurch': Key('a-d') + Pause('20') + Text('python pyspark '),
-		'goat bar': Key('a-d, c-c'),
+		'goat bar': Key('a-d'),
 		'run it': Key('s-enter'),
 
         #bit bucket
@@ -57,7 +57,8 @@ class GlobalChromeMappings(MappingRule):
 
         # Common websites
         'Open zoom': Key("c-t") + Text(R"https://zoom.us/j/6516749931") + Key("enter"),
-        'Open pipes': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/PassList/_build") + Key("enter"),
+        'Open pass build': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/PassList/_build") + Key("enter"),
+        'Open data build': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/DataPipelines/_build") + Key("enter"),
         'Open tech docs': Key("c-t") + Text(R"https://docs.google.com/document/d/1XVYzcH_kkqa6Wr13Z654RdRuJ1j0mVRVMgU8_XSiTx0/edit") + Key("enter"),
         'Open commander': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
         'Open redis': Key("c-t") + Text("https://redis.io/commands") + Key("enter"),
@@ -70,23 +71,17 @@ class GlobalChromeMappings(MappingRule):
         'Open load test': Key("c-t") + Text("https://app.k6.io/projects/3490751") + Key("enter"),
         'open notes': Key("c-t") + Text("https://docs.google.com/document/d/1UpkG04_QhrmELH0qUvN0CCuXheeoAZqq4Ij0ZJvl6ag/edit") + Key("enter"),
         'open lake': Key("c-t") + Text(R"https://portal.azure.com/#blade/Microsoft_Azure_Storage/ContainerMenuBlade/overview/storageAccountId/%2Fsubscriptions%2Fc22e7019-2735-41cf-8a4d-3a887aa2cbac%2FresourceGroups%2Frg-datapipelines-sb%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fdlsdatapipelinessb/path/passlist/etag/%220x8D86AF6914772FD%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride//defaultId//publicAccessVal/None") + Key("enter"),
+        'open sumo': Key("c-t") + Text(R"https://inspirato.us2.sumologic.com/ui/#/search/cea32bc6_2883_5d31_582c_1b141cf2c6da") + Key("enter"),
 
 
         #azure
-        'Open Azure': Key("c-t") + Text("https://portal.azure.com/#@softwarelicensesinspirato.onmicrosoft.com/dashboard/private/a407531c-5b0b-4155-a704-5e4d3f777018") + Key("enter"),
         'Open Azure red': Key("c-t") + Text(R'https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Cache%%2FRedis') + Key("enter"),
-        'Open bricks': Key("c-t") + Text(R'https://adb-8131518869320383.3.azuredatabricks.net/?o=8131518869320383#notebook/2088104879611134/command/2480264226564932') + Key("enter"),
+        'Open Azure': Key("c-t") + Text(R'https://portal.azure.com/#home') + Key("enter"),
+        'Open bricks': Key("c-t") + Text(R'https://adb-1477701841953214.14.azuredatabricks.net/?o=1477701841953214#joblist') + Key("enter"),
         'Open pie spark': Key("c-t") + Text(R'https://spark.apache.org/docs/latest/api/python/index.html') + Key("enter"),
         
         # Bit bucket
         'open bit': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
-        'open bit pass': Key("c-t") + Text("https://bitbucket.org/account/user/inspirato/projects/PL") + Key("enter"),
-        'open bit build': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-build/src/develop") + Key("enter"),
-        'open bit biz': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-business/src/develop/") + Key("enter"),
-        'open bit biz branches': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-business/branches/?status=all") + Key("enter"),
-        'open bit end': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-endpoints/src/develop") + Key("enter"),
-        'open bit end branches': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-endpoints/branches/?status=all") + Key("enter"),
-        'open bit up': Key("c-t") + Text("https://bitbucket.org/inspirato/passlist-update/src/develop") + Key("enter"),
         'open bit pipe': Key("c-t") + Text("https://bitbucket.org/inspirato/data-pipeline/src/master/") + Key("enter"),
         
         'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),
@@ -95,7 +90,8 @@ class GlobalChromeMappings(MappingRule):
         # 'Open JS snippets': Key("c-t") + Text("https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets") + Key("enter"),
 
         # Jira
-        'create ticket': Key("c-t") + Text("https://inspirato.atlassian.net/secure/CloneIssueDetails!default.jspa?id=175277") + Key("enter"),
+        'open ticket': Key("c-t") + Text("https://inspirato.atlassian.net/secure/CloneIssueDetails!default.jspa?id=188626") + Key("enter"),
+        'open task': Key("c-t") + Text("https://inspirato.atlassian.net/secure/CloneIssueDetails!default.jspa?id=191596") + Key("enter"),
         # coding
         # 'open snippets': Key("c-t") + Text("https://docs.microsoft.com/en-us/visualstudio/ide/visual-csharp-code-snippets?view=vs-2019") + Key("enter"),
 

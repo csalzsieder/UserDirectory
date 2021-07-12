@@ -15,7 +15,7 @@ def key_stroke_number_minus_1(number):
     Key('enter').execute()
 
 def goToTerminal():
-    Key("cs-`").execute()
+    Key("c-backslash,c-backslash").execute()
     Pause('50').execute()
 
 class VisualStudioMappings(MappingRule):
@@ -108,24 +108,23 @@ class VisualStudioMappings(MappingRule):
         'copy down': Key('c-d'),
         
         # git 
-        'get called <number>':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git cob feature/DF-%(number)s"),
-        'get called':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git cob feature/"),
-        'get check out develop':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git co develop") + Key("enter"),
-        'get check out <nospace>':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git co %(nospace)s/"),
-        'get check out MC':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git co feature/new-mcapi-integration") + Key('enter'),
+        'get called <number>':Function(goToTerminal) + Text("git cob feature/DF-%(number)s"),
+        'get called':Function(goToTerminal) + Text("git cob feature/"),
+        'get check out develop':Function(goToTerminal) + Text("git co develop") + Key("enter"),
+        'get check out <nospace>':Function(goToTerminal) + Text("git co %(nospace)s/"),
+        'get check out MC':Function(goToTerminal) + Text("git co feature/new-mcapi-integration") + Key('enter'),
         'get discard':Function(goToTerminal) + Text("git checkout -- .") + Key("enter"),
-        'get merge <text>':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git merge --%(text)s") + Key("enter"), #Abort, merge
-        'get merge develop':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git merge origin/develop") + Key("enter"),
-        'get merge feature':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git merge feature/DF-"),
-        'get pull':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git pull") + Key("enter"),
-        'get push':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git push") + Key("enter"),
+        'get merge <text>':Function(goToTerminal) + Text("git merge --%(text)s") + Key("enter"), #Abort, merge
+        'get merge develop':Function(goToTerminal) + Text("git merge origin/develop") + Key("enter"),
+        'get merge feature':Function(goToTerminal) + Text("git merge feature/DF-"),
+        'get pull':Function(goToTerminal) + Text("git pull") + Key("enter"),
+        'get push':Function(goToTerminal) + Text("git push") + Key("enter"),
         'get stash': Key("c-backslash,c-backslash") + Text("git stash") + Key("enter"),
-        'get stash <text>':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text("git stash %(text)s") + Key("enter"), #drop/pop
-        'get commit <text>':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m "%(text)s"'),
-        'get commit':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m ""') + Key('left'),
-        'get commit whip':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text('git add -A && git commit -m "wip"') + Key('left') + Key("enter"),
-        'get snap':Function(goToTerminal) + Key("c-backslash,c-backslash") + Text('git co @{-1}') + Key('left'),
-        # 'get add': Key("c-backslash,c-backslash") + Text('git add -A') + Key('enter'),
+        'get stash <text>':Function(goToTerminal) + Text("git stash %(text)s") + Key("enter"), #drop/pop
+        'get commit <text>':Function(goToTerminal) + Text('git add -A && git commit -m "%(text)s"'),
+        'get commit':Function(goToTerminal) + Text('git add -A && git commit -m ""') + Key('left'),
+        'get commit whip':Function(goToTerminal) + Text('git add -A && git commit -m "wip"') + Key('left') + Key("enter"),
+        'get snap':Function(goToTerminal) + Text('git co @{-1}') + Key('left'),
         
 
         # Snippets

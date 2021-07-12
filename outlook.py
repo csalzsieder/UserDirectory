@@ -2,16 +2,17 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse, Function)
 
 def calculateSlotNumber(number):
-    startingPoint = .35
-    increment = .053
+    startingPoint = .25
+    increment = .07
     calculation = (number*increment)
     slotNumber = (startingPoint + calculation) - increment
     Mouse("(0.3, {}), left".format(slotNumber)).execute()
 
 class CodeMappings(MappingRule):
     mapping = {
-        'Slot <number>': Function(calculateSlotNumber),
+        'tab <number>': Function(calculateSlotNumber),
         'new message': Key('c-n'),
+        'send items': Key('c-y, down:2, enter'),
 		
         }
     extras=[

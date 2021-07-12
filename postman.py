@@ -3,7 +3,7 @@ from dragonfly import (Grammar, AppContext, MappingRule, Integer, Key, Text, Dic
 
 class CodeMappings(MappingRule):
     mapping = {  
-            'run it': Key('c-enter'),
+            'send it': Key('c-enter'),
             'sidebar': Key('c-backslash'),
             'line nip': Key('c-slash'),
             'close tab': Key('ca-w'),

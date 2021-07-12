@@ -71,7 +71,7 @@ class CodeMappings(MappingRule):
         'Save': Key('c-s'),
         'see view': Key('cs-e'),
         'team view': Key('cs-g,g'),
-        'term view': Key('csa-t'),
+        'term view':Key('cs-`'),
         'Open tab': Key('c-n'),
         'Sidebar': Key('c-b'),
         'find death': Key('sa-f12'),
@@ -90,22 +90,22 @@ class CodeMappings(MappingRule):
         'Execute <text>': Key('cs-p') + Text('Execute %(text)s') + Key('enter'), #Query, selected
 
         # git 
-        'get check out develop': Key('csa-t') + Text('inter') + Key('enter') + Pause("20") + Text("git co develop && git pull") + Key("enter"),
-        'get check out feature': Key('csa-t') + Pause("20") + Text("git co feature/"),
-        'get called release': Key('csa-t') + Text("git cob release/"),
-        'get called feature': Key('csa-t') + Text("git cob feature/DF-"),
+        'get check out develop':Key('cs-`') + Text('inter') + Key('enter') + Pause("20") + Text("git co develop && git pull") + Key("enter"),
+        'get check out feature':Key('cs-`') + Pause("20") + Text("git co feature/"),
+        'get called release':Key('cs-`') + Text("git cob release/"),
+        'get called feature':Key('cs-`') + Text("git cob feature/DF-"),
         'num var': Key("%,(,n,u,m,b,e,r,),d"),
-        'get checkout <text>': Key('csa-t') + Text("git co %(text)s/"),
-        'get merge <text>': Key('csa-t') + Pause("20") + Text("git merge --%(text)s"), #Continue, abort
-        'get merge develop': Key('csa-t') + Text("git merge origin/develop") + Key('enter'),
-        'get commit': Key('csa-t') + Pause("10") + Text('git commit -am ""') + Pause("10") +         Key('left'),
-        'get push': Key('csa-t') + Pause("10") + Text('git push') + Pause("10") + Key('enter'),
-        'get pull': Key('csa-t') + Pause("10") + Text('git pull') + Pause("10") + Key('enter'),
-        'get branch': Key('csa-t') + Pause("10") + Text('git branch -r') + Pause("10") + Key('enter'),
+        'get checkout <text>':Key('cs-`') + Text("git co %(text)s/"),
+        'get merge <text>':Key('cs-`') + Pause("20") + Text("git merge --%(text)s"), #Continue, abort
+        'get merge develop':Key('cs-`') + Text("git merge origin/develop") + Key('enter'),
+        'get commit':Key('cs-`') + Pause("10") + Text('git commit -am ""') + Pause("10") +         Key('left'),
+        'get push':Key('cs-`') + Pause("10") + Text('git push') + Pause("10") + Key('enter'),
+        'get pull':Key('cs-`') + Pause("10") + Text('git pull') + Pause("10") + Key('enter'),
+        'get branch':Key('cs-`') + Pause("10") + Text('git branch -r') + Pause("10") + Key('enter'),
 
         # Builds
-        'yarn <text>': Key('csa-t') + Pause('10') + Text("yarn %(text)s") + Key("enter"), #install, lint, clean, build, dev
-        'build wheel': Key('csa-t') + Pause('10') + Text('./buildLoadWheelToCluster.sh') + Key('enter'),
+        'yarn <text>':Key('cs-`') + Pause('10') + Text("yarn %(text)s") + Key("enter"), #install, lint, clean, build, dev
+        'build wheel':Key('cs-`') + Pause('10') + Text('./buildLoadWheelToCluster.sh') + Key('enter'),
 
         # 'test': bar("text"),  
     }

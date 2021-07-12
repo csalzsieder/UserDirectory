@@ -59,7 +59,7 @@ class CodeMappings(MappingRule):
         'snip select': Text(".select("),
 
         #azure
-        'Open bricks': Key("c-t") + Text(R'https://adb-190398843147329.9.azuredatabricks.net/login.html?o=190398843147329#') + Key("enter"),
+        'Open bricks': Key("c-t") + Text(R'https://adb-1477701841953214.14.azuredatabricks.net/?o=1477701841953214#joblist') + Key("enter"),
     }
     extras=[
         Integer('tab', 1, 10),
