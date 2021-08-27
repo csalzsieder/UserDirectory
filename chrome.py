@@ -57,8 +57,7 @@ class GlobalChromeMappings(MappingRule):
 
         # Common websites
         'Open zoom': Key("c-t") + Text(R"https://zoom.us/j/6516749931") + Key("enter"),
-        'Open pass build': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/PassList/_build") + Key("enter"),
-        'Open data build': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/DataPipelines/_build") + Key("enter"),
+        'Open build': Key("c-t") + Text(R"https://dev.azure.com/inspirato-dev/Data%20Platform/_build") + Key("enter"),
         'Open tech docs': Key("c-t") + Text(R"https://docs.google.com/document/d/1XVYzcH_kkqa6Wr13Z654RdRuJ1j0mVRVMgU8_XSiTx0/edit") + Key("enter"),
         'Open commander': Key("c-t") + Text("http://127.0.0.1:8081") + Key("enter"),
         'Open redis': Key("c-t") + Text("https://redis.io/commands") + Key("enter"),
@@ -82,7 +81,7 @@ class GlobalChromeMappings(MappingRule):
         
         # Bit bucket
         'open bit': Key("c-t") + Text("https://bitbucket.org/dashboard/overview") + Key("enter"),
-        'open bit pipe': Key("c-t") + Text("https://bitbucket.org/inspirato/data-pipeline/src/master/") + Key("enter"),
+        'open bit data': Key("c-t") + Text("https://bitbucket.org/inspirato/data-platform/src/main/") + Key("enter"),
         
         'Open grammer chat': Key("c-t") + Text("https://gitter.im/dictation-toolbox/dragonfly?source=orgpage") + Key("enter"),
         'Open ticket <number>': Key("c-t") + Text("https://inspirato.atlassian.net/browse/DF-%(number)d") + Key("enter"),

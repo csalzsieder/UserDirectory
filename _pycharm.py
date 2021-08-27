@@ -23,6 +23,7 @@ class CodeMappings(MappingRule):
         'pause snip': Text('pau') + Pause('50') + Key('tab'),
         'pie def': Text('def'),
         'in com': Text('# COMMAND ----------'),
+        'if main': Text("if __name__ == '__main__':"),
 
         # Python
         'py commment': Text('##############################') + Key('enter') + Text('# '),
@@ -49,8 +50,7 @@ class CodeMappings(MappingRule):
 
         # Editing
         'get usage': Key("a-f7"),
-        'replace local': Key("c-h"),
-		'replace global': Key("cs-h"),
+		'replace global': Key("cs-r"),
         'back space': Key('backspace'),
         'Div <text>': Text('<div>%(text)s</div>'),
         'Open folder': Key('c-k,c-o'),
@@ -73,7 +73,8 @@ class CodeMappings(MappingRule):
         'py Phi': Key('a-insert,p,f, enter'),
         'py package': Key('a-insert,p, enter'),
         'py directory': Key('a-insert,d, enter'),
-        # 'py con': Key('csa-p'),
+        'open in files': Key('csa-o'),
+        'Reload disk': Key('ca-y'),
         'bug con': Key('csa-r'),
         
 
@@ -104,6 +105,7 @@ class CodeMappings(MappingRule):
         # views
         'commit view': Key('a-0'),
         'see view': Key('a-1'),
+        'see hide': Key('s-escape'),
         'favorite view': Key('a-2'),
         'find view': Key('a-3'),
         'run view': Key('a-4'),
@@ -112,6 +114,8 @@ class CodeMappings(MappingRule):
         'con view': Key('a-7'),
         'git view': Key('a-9'),
         'see match': Key('a-f1,1'),
+        'see minus': Key('c-minus'),
+        'see plus': Key('c-plus'),
         'set view': Key('ca-s'),
         'term view': Key("a-f12"),
         'book view': Key("s-f11"),
@@ -158,18 +162,17 @@ class CodeMappings(MappingRule):
         'cd <number>': Function(repeat) + Key('enter'),
 
         # git 
-        'get check out master': Function(gitPause) + Text("git co master && git pull && git fetch") + Key("enter"),
         'get check out main': Function(gitPause) + Text("git co main && git pull && git fetch") + Key("enter"),
         'get check out feature': Function(gitPause) + Text("git co feature/"),
         'get fetch': Function(gitPause) + Text("git fetch") + Key('enter'),
         'get called <nospace>': Function(gitPause) + Text("git cob %(nospace)s/"),
-        'get called ticket': Function(gitPause) +  Text("git cob feature/DF-"),
+        'get called ticket': Function(gitPause) +  Text("git cob feature/DP-"),
         'get checkout <text>': Function(gitPause) + Text("git co %(text)s/"),
         'get merge <text>': Function(gitPause) + Text("git merge --%(text)s"), #Continue, abort
         'get merge develop': Function(gitPause) + Text("git merge origin/develop") + Key('enter'),
-        'get merge master': Function(gitPause) + Text("git merge origin/master") + Key('enter'),
+        'get merge main': Function(gitPause) + Text("git merge origin/main") + Key('enter'),
         'get tags': Function(gitPause) + Text('git tag -l --sort=-v:refname') + Key('enter'),
-        'get tag': Function(gitPause) + Text('git tag version/'),
+        'get tag pass': Function(gitPause) + Text('git tag passlist/'),
         'get tag push': Text(' & git push origin --tag') + Key('enter'),
         'get commit': Function(gitPause) + Text('git commit -am ""') + Pause("10") + Key('left'),
         'get commit wip': Function(gitPause) + Text('git commit -am wip') + Key('enter'),
@@ -179,6 +182,7 @@ class CodeMappings(MappingRule):
         'get pull': Function(gitPause) + Text('git pull') + Pause("10") + Key('enter'),
         'get branch': Function(gitPause) + Text('git branch -r') + Pause("10") + Key('enter'),
         'get branches': Key('cs-`'),
+        'get branch delete': Key('shift,shift') + Text('delete old branch') + Key('enter'),
         'get discard': Function(gitPause) + Text("git checkout -- .") + Pause("10") + Key('enter'),
         'get stash <text>': Function(gitPause) + Text("git stash %(text)s") + Key("enter"), #drop/pop
         'get stash': Function(gitPause) + Text("git stash") + Key("enter"), #drop/pop
@@ -203,7 +207,7 @@ class CodeMappings(MappingRule):
         'pip install edit': Function(gitPause) + Text("pipenv install --editable "),
         'pip list': Function(gitPause) + Text("pipenv run pip list") + Key('enter'),
         'pip shell': Function(gitPause) + Text("pipenv shell") + Key('enter'),
-        'pip sync': Function(gitPause) + Text("pipenv run pipenv-setup sync") + Key('enter'),
+        'pip sync': Function(gitPause) + Text("pipenv run Develop") + Key('enter'),
         'pip exit': Function(gitPause) + Text("exit") + Key('enter'),
 
 
@@ -213,6 +217,18 @@ class CodeMappings(MappingRule):
         'bricks scopes': Function(gitPause) + Text("databricks secrets list --scope"),
         'bricks connect': Function(gitPause) + Text("databricks-connect configure"),
         'bricks push': Function(gitPause) + Text("databricks workspace import_dir . /passlist -o") + Key('enter'),
+
+        # docker
+        'dock list': Function(gitPause) + Text('docker ps -a') + Key('enter'),
+        'dock rem': Function(gitPause) + Text('docker rm'),
+        'dock start': Function(gitPause) + Text('docker start'),
+        'dock stop': Function(gitPause) + Text('docker stop'),
+        'dock logs': Function(gitPause) + Text('docker logs'),
+        'dock compose': Function(gitPause) + Text('docker-compose up') + Key('enter'),
+        'dock build ': Function(gitPause) + Text('docker-compose up --build') + Key('enter'),
+        'dock to air': Function(gitPause) + Text('docker exec -it airflow_airflow-webserver_1 bash') + Key('enter'),
+        # 'dock red': Function(gitPause) + Text('docker run --name redis -p 6379:6379 -d redis') + Key('enter'),
+        # 'dock start red': Function(gitPause) + Text('docker start redis') + Key('enter'),
 
         # Builds
         'yarn <text>': Key('csa-t') + Pause('10') + Text("yarn %(text)s") + Key("enter"), #install, lint, clean, build, dev
