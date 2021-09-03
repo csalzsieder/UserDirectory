@@ -56,6 +56,8 @@ class CodeMappings(MappingRule):
         'Open folder': Key('c-k,c-o'),
         'New copy': Key('c-c,c-v'),
         'copy down': Key('c-d'),
+        'move up': Key('cs-up'),
+        'move down': Key('cs-down'),
 		'Load web': Key('w-4') + Pause('50') + Key('f5') + Pause('50') + Key('w-5'),
         'copy line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end,c-c'),
         'select line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end'),
@@ -135,7 +137,7 @@ class CodeMappings(MappingRule):
         'book <number>': Key('c-%(number)d'),
         'find death': Key('sa-f12'),
         'goat in': Key('ca-b'),
-        'Goat': Key('cs-n'),
+        'Goat': Key('shift,shift'),
         'Goater': Key('c-e'),
         'Goat funk': Key('cs-o'),
         'Goat prop': Key('cs-p'),
@@ -216,6 +218,7 @@ class CodeMappings(MappingRule):
         'bricks secrets': Function(gitPause) + Text("databricks secrets list-scopes") + Key('enter'),
         'bricks scopes': Function(gitPause) + Text("databricks secrets list --scope"),
         'bricks connect': Function(gitPause) + Text("databricks-connect configure"),
+        'bricks test': Function(gitPause) + Text("databricks-connect test"),
         'bricks push': Function(gitPause) + Text("databricks workspace import_dir . /passlist -o") + Key('enter'),
 
         # docker

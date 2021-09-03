@@ -1,6 +1,6 @@
 #imports the library
 # from pywinauto.application import Application
-from dragonfly import (BringApp, StartApp, Function, Mimic, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
+from dragonfly import (StartApp, Function, Mimic, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
 from passes import prod_pass, sand_pass, craig_pass, in_pass
 
 def start_day():
@@ -40,7 +40,8 @@ class GlobalMappings(MappingRule):
         'down': Key('down'),
 
         'connect cisco': Function(connect_cisco),
-		'find [<text>]': Key("c-f") + Pause("10") + Text("%(text)s"),
+		'find <text>': Key("c-f") + Text("%(text)s"),
+		'find': Key("c-f"),
         'Dunk': Key('s-delete'), 
         'snap': Key('a-tab'),
         'snap hold': Key('alt:down, tab'),
@@ -73,12 +74,14 @@ class GlobalMappings(MappingRule):
         'copy home': Key('s-home, c-c'),
         'select all': Key("c-a"),
         'copy all': Key("c-a,c-c"),
-        'line end [<number>]': Key("end") + Key("left:%(number)d"),
-        'line home [<number>]': Key("home") + Key("right:%(number)d"),
+        'line end': Key("end"),
+        'line end <number>': Key("end") + Key("left:%(number)d"),
+        'line home': Key("home"),
+        'line home <number>': Key("home") + Key("right:%(number)d"),
         'undo': Key("c-z"),
-        'undo [<number>]': Key("c-z:%(number)d"),
+        'undo <number>': Key("c-z:%(number)d"),
         'redo ': Key("c-y"),
-        'redo [<number>]': Key("c-y:%(number)d"),
+        'redo <number>': Key("c-y:%(number)d"),
         'win up': Key('win:down, up, win:up'),
         'win right': Key('win:down, right, win:up'),
         'win down': Key('win:down, down, win:up'),
@@ -89,8 +92,6 @@ class GlobalMappings(MappingRule):
         'cut': Key('c-x'),
         'paste': Key('c-v'),
         'del': Key('del'),
-        'to end': Key('end'),
-        'to home': Key('home'),
         'quote': Key('squote'),
         'comma': Key('comma'),
         'snooze': Key('csa-slash'),
@@ -114,9 +115,8 @@ class GlobalMappings(MappingRule):
         # 'to studs': Key("win:down, 6, 6, 6, win:up") + Pause('50') + Key("enter"),
         # 'to data': Key("w-7"),
         'to post': Key("w-8"),
-        'to shell': Key("w-9") + Pause('30') + Key('enter'),
         # 'to shell': Key("w-8") + Pause('10') + Key("enter"),
-        'to bricks': Key("w-0"),
+        'to bricks': Key("w-9"),
         # 'to data': Key("w-0"),
         # 'to dragon': Key("w-1,0"),
         # 'to Notepad': Key("w-11"),
@@ -133,7 +133,7 @@ class GlobalMappings(MappingRule):
         'in User': Text("csalzsieder"),
 
 
-        'open dock' : Key('win,s') + Pause('20') + Text('docker') + Pause('20') + Key('enter'),
+        'open dock' : Key('win,s') + Pause('20') + Text('docker') + Pause('20') + Key('enter'), 
 
         # 'open pie': StartApp(R"C:\Users\csalzsieder\AppData\Local\Programs\Microsoft VS Code\Code.exe") 
         #     + Pause('500') + Key("cs-o,a-d") + Key("c-k,c-o,a-d") + Pause('50') 
@@ -158,19 +158,19 @@ class GlobalMappings(MappingRule):
     extras=[
         Integer('tab', 1, 10),
         Integer('number', 1, 9999),
-        Dictation("camel_text", default="").camel(),
+        Dictation("camel_text").camel(),
         # Define a Dictation element that produces snake case text,
         # e.g. hello_world.
-        Dictation("snaketext", default="").lower().replace(" ", "_"),
-        Dictation("dashtext", default="").lower().replace(" ", "-"),
-        Dictation("lowtext", default="").lower(),
+        Dictation("snaketext").lower().replace(" ", "_"),
+        Dictation("dashtext").lower().replace(" ", "-"),
+        Dictation("lowtext").lower(),
         # Define a Dictation element that produces text matching Python's
         # class casing, e.g. DictationContainer.
-        Dictation("pascaltext", default="").title().replace(" ", ""),
-        Dictation("titletext", default="").title().replace(" ", " "),
+        Dictation("pascaltext").title().replace(" ", ""),
+        Dictation("titletext").title().replace(" ", " "),
         # Allow adding underscores before cased text.
-        Choice("under", {"under": "_"}, default=""),
-        Choice("dash", {"dash": "-"}, default=""),
+        Choice("under", {"under": "_"}),
+        Choice("dash", {"dash": "-"}),
         
         Dictation("text")
     ]

@@ -34,7 +34,7 @@ class IERule(MappingRule):
         "Open funk": Key("a-d") + Text(R'D:\GitProjects\accommodation-tags-etl\AccommodationTagETL.sln') + Key('enter'),
         "code <dashtext> ": Key("a-d") + Text(R'D:\GitProjects\%(dashtext)s') + Key('enter'),
 
-        "copy grammers": Key("a-d") + Text(R'C:\NatLink\NatLink\MacroSystem') + Key('enter') + Pause('50') + Key('tab:9, down:2, shift:down, end, shift:up,c-c,a-d') + Text('C:\NatLink\UserDirectory') + Key('enter') + Pause('50') + Key('enter, tab:9,c-v') + Pause('50') + Key('enter'),
+        # "copy grammers": Key("a-d") + Text(R'C:\NatLink\NatLink\MacroSystem') + Key('enter') + Pause('50') + Key('tab:9, down:2, shift:down, end, shift:up,c-c,a-d') + Text('C:\NatLink\UserDirectory') + Key('enter') + Pause('50') + Key('enter, tab:9,c-v') + Pause('50') + Key('enter'),
         "Test mimic" : Mimic
 
     }

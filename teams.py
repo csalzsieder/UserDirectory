@@ -20,7 +20,6 @@ class CodeMappings(MappingRule):
         'snurch': Key('c-e'),
         'goat': Key('c-g'),
         'Filter': Key('cs-f'),
-        'snooze': Key('csa-slash'),
         'make call': Key('cs-c') + Key('csa-slash'),
         '<text>': Text("%(text)s "),
         

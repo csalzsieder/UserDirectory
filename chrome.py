@@ -1,25 +1,10 @@
-#imports the library
-# from selenium import webdriver
 import time
  
 from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Pause)  
-
-def test():
-    options = webdriver.ChromeOptions()
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument("--test-type")
-    options.binary_location = "/usr/bin/chromium"
-    driver = webdriver.Chrome(chrome_options=options)
-    driver.get('https://python.org')
-    
-
-def foo():
-    print(test)
+  
 
 class GlobalChromeMappings(MappingRule):
     mapping = {
-        'web test': Function(test),
-        'print test': Function(foo),
         'close tab': Key('c-w'),
         'open tab': Key('c-t') + Pause('30') + Key('f6:3') + Pause('50') + Key('cs-.'),
         'restore tab': Key('cs-t'),
@@ -64,7 +49,7 @@ class GlobalChromeMappings(MappingRule):
         'Open pluralsight': Key("c-t") + Text("https://app.pluralsight.com/library/") + Key("enter"),
         'Open fly docs': Key("c-t") + Text("https://pythonhosted.org/dragonfly/actions.html#key-names") + Key("enter"),
         'open octo': Key("c-t") + Text("https://octo.inspirato.com:8000/app") + Key("enter"),
-        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/secure/RapidBoard.jspa?rapidView=321") + Key("enter"),
+        'Open Jira': Key("c-t") + Text("https://inspirato.atlassian.net/jira/software/c/projects/DP/boards/341") + Key("enter"),
         'Open wiki': Key("c-t") + Text("https://inspirato.atlassian.net/wiki/spaces/IN/overview?mode=global") + Key("enter"),
         'Open Gmail': Key("c-t") + Text("https://mail.google.com/mail/u/0/#inbox") + Key("enter"),
         'Open load test': Key("c-t") + Text("https://app.k6.io/projects/3490751") + Key("enter"),
@@ -89,7 +74,7 @@ class GlobalChromeMappings(MappingRule):
         # 'Open JS snippets': Key("c-t") + Text("https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets") + Key("enter"),
 
         # Jira
-        'open ticket': Key("c-t") + Text("https://inspirato.atlassian.net/secure/CloneIssueDetails!default.jspa?id=188626") + Key("enter"),
+        'open ticket': Key("c-t") + Text("https://inspirato.atlassian.net/browse/DP-115") + Key("enter") + Pause('300') + Key('.') + Pause('100') + Text('clone') + Key('enter'),
         'open task': Key("c-t") + Text("https://inspirato.atlassian.net/secure/CloneIssueDetails!default.jspa?id=191596") + Key("enter"),
         # coding
         # 'open snippets': Key("c-t") + Text("https://docs.microsoft.com/en-us/visualstudio/ide/visual-csharp-code-snippets?view=vs-2019") + Key("enter"),
