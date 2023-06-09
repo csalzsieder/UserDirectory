@@ -28,7 +28,6 @@ class CodeMappings(MappingRule):
         # 'pie def': Text('df'),
         # 'in com': Text('# COMMAND ----------'),
 
-
         # Python
         'py com': Text('##############################') + Key('enter') + Text('# '),
         'py com end': Text('##############################') + Key('enter'),
