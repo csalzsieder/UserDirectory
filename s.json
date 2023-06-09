@@ -1,0 +1,28 @@
+
+{
+	field1: string,
+	field2: array[int]
+	field3: object : {
+		subfield1: string,
+		subfield2: array[object] : {
+			subsubfield1: string,
+			subsubfield2: int,
+			subsubfield3: date
+		}
+
+	}
+}
+earliestBookingDateUtc: "2015-08-12T04:06:00+00:00"
+earliestCheckInDateOffset: 
+days: 1
+hours: 3
+minutes: 0
+earliestHoldDateUtc: "2015-08-12T04:06:00+00:00"
+lastAvailableCheckoutDateOffsetDays: null
+operationalDates: 
+0: 
+endDate: "2014-04-30T00:00:00+00:00"
+id: "UA0478"
+precedingMessage: null
+startDate: "2011-02-04T00:00:00+00:00"
+succeedingMessage: null

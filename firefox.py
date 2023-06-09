@@ -27,7 +27,7 @@ class CodeMappings(MappingRule):
         
 
         # code - bricks
-        'line nip': Key('c-slash'), 
+        'zap': Key('c-slash'), 
         'run me': Key('c-enter'), 
         'run it': Key('s-enter'), 
         'run up': Key('sa-up'), 
@@ -36,7 +36,6 @@ class CodeMappings(MappingRule):
         'previ': Key('c-pgup'),
         'insert up': Key('ca-p'),
         'insert down': Key('ca-n'),
-        'insert display': Key('ca-p') + Pause('100') + Text('display('),
         'split cell': Key('ca-n'),
         'copy cell': Key('ca-c'),
         'cut cell': Key('ca-x'),
@@ -47,10 +46,22 @@ class CodeMappings(MappingRule):
         'dedent me': Key('c-['),
         'find me': Key('ca-f'),
         'paste wheel': Text('dbfs:/FileStore/jars/passlist-1.0.0-py3-none-any.whl'),
+        'print <snaketext>': Text('print(') + Text('%(snaketext)s') + Text('_df.count())'),
+        'display <snaketext>': Text('display(') + Text('%(snaketext)s') + Text('_df)'),
+        'frame <snaketext>': Text('%(snaketext)s') + Text('_df'),
+        'log <snaketext>': Text('print(') + Text('%(snaketext)s') + Text('_df.count())') + Key("enter") + Text('display(') + Text('%(snaketext)s') + Text('_df)'),
+        'F call': Text('F.col("")') + Key('left:2'),
+        'to select': Text('.select()') + Key('left:1'),
+        'to join': Text('.join()') + Key('left:1'),
+        'to where': Text('.where()') + Key('left:1'),
+        'to distinct': Text('.distinct()'),
+        'to column': Text('.withColumn("")') + Key('left:2'),
+        # "<lowtext>": Text("%(lowtext)s"),
+
         
 
         #snippets
-        'magic mark': Key('percent, m, d, space, #,#'),
+        'magic mark': Key('percent, m, d, enter, #,#'),
         'magic run': Key('percent, r, u, n, space'),
         'con blob': Key('percent, r, u, n, space') + Text(' "../ConnectBlob"'),
         'snip display': Text('display('),
@@ -59,13 +70,18 @@ class CodeMappings(MappingRule):
         'snip select': Text(".select("),
 
         #azure
-        'Open bricks': Key("c-t") + Text(R'https://adb-1477701841953214.14.azuredatabricks.net/?o=1477701841953214#joblist') + Key("enter"),
+        'Open test': Key("c-t") + Text(R'https://adb-2707707152410749.9.azuredatabricks.net/?o=2707707152410749#job/list') + Key("enter"),
+        'Open qa': Key("c-t") + Text(R'https://adb-1477701841953214.14.azuredatabricks.net/?o=1477701841953214#joblist') + Key("enter"),
+        'Open prod': Key("c-t") + Text(R'https://adb-8131518869320383.3.azuredatabricks.net/?o=8131518869320383#job/list') + Key("enter"),
+        'Open failed': Key("c-t") + Text(R'https://adb-8131518869320383.3.azuredatabricks.net/?o=8131518869320383#job/runs?status=failed&offset=0') + Key("enter"),
     }
     extras=[
         Integer('tab', 1, 10),
         Integer('number', 1, 99999),
         Dictation("text"),
         Dictation("pascal_text", default="").title().replace(" ", ""),
+        Dictation("lowtext").lower(),
+        Dictation("snaketext").lower().replace(" ", "_"),
     ]
 
 context = AppContext(executable='firefox')

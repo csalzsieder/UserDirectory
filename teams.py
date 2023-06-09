@@ -4,7 +4,7 @@ from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key,
 
 def calculateSlotNumber(number):
     startingPoint = .20
-    increment = .058
+    increment = .05
     calculation = (number*increment)
     slotNumber = (startingPoint + calculation) - increment
     Mouse("(0.1, {}), left".format(slotNumber)).execute()
@@ -21,7 +21,7 @@ class CodeMappings(MappingRule):
         'goat': Key('c-g'),
         'Filter': Key('cs-f'),
         'make call': Key('cs-c') + Key('csa-slash'),
-        '<text>': Text("%(text)s "),
+        # '<text>': Text("%(text)s "),
         
     }
     extras=[

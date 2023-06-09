@@ -1,0 +1,40 @@
+confluent key - FX6WWSSHQA3TTBGO
+confluence secret - sqb4h2U0t1+bBFo5YbNJgKz5v5A5DPCjTjufd+kpEjL/bN84GF7AvLwxTcGr57vk
+
+
+
+
+# Required connection configs for Kafka producer, consumer, and admin
+bootstrap.servers=pkc-ldvmy.centralus.azure.confluent.cloud:9092
+security.protocol=SASL_SSL
+sasl.mechanisms=PLAIN
+sasl.username={{ CLUSTER_API_KEY }}
+sasl.password={{ CLUSTER_API_SECRET }}
+
+# Best practice for higher availability in librdkafka clients prior to 1.7
+session.timeout.ms=45000
+
+# Required connection configs for Confluent Cloud Schema Registry
+schema.registry.url=https://psrc-kg7rp.westus2.azure.confluent.cloud
+basic.auth.credentials.source=USER_INFO
+basic.auth.user.info={{ SR_API_KEY }}:{{ SR_API_SECRET }}
+
+CREATE STREAM pass_raw_json_2 (
+  ID STRING,
+  ASSETID STRING,
+  ASSETOPTIONID STRING,
+  STARTDATESTRING STRING,
+  ISCANCELED STRING
+) 
+WITH (kafka_topic='pass', value_format='JSON');
+
+CREATE STREAM pass_json_sr_ WITH (KAFKA_TOPIC='pass_json_sr_2', VALUE_FORMAT='JSON_SR') as select * from pass_raw_json_2;
+
+
+CREATE STREAM PASS_SRC WITH (KAFKA_TOPIC='pass_delete', VALUE_FORMAT='JSON');
+
+CREATE STREAM PASS_TRIPS_DELETED
+          WITH (KAFKA_TOPIC='pass', VALUE_FORMAT='JSON_SR') AS 
+          SELECT assetOptionId, CAST(NULL AS VARCHAR) 
+          FROM pass_raw_json_2
+          WHERE ISCANCELED = 'TRUE';

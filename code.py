@@ -3,40 +3,46 @@ import os
 # from selenium import webdriver
 # from selenium.webdriver.common.keys import Keys
 import time
+from xml.dom import pulldom
 from dragonfly import (Function,Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mimic)
 
-def bar():
-    # driver.execute_script("window.open('');")
-    driver.get('https://python.org')
+def gitPause():
+    Key('alt').execute() 
+    Pause('10').execute()
+    Key('c-`').execute() 
+    Pause("10").execute()
 
-def start_selenium():
-    global driver
-    options = webdriver.ChromeOptions()
-    options.add_argument('--ignore-certificate-errors')
-    path = "/Users/csalzsieder/chromedriver_win32/chromedriver"
-    driver = webdriver.Chrome(path, chrome_options=options)
-
+def repeat(number):
+    s = 'cd '
+    for i in range(0, number):
+            s += '../'
+    
+    Text('{}'.format(s)).execute()
+    
 class CodeMappings(MappingRule):
     mapping = {  
         # Snippets
-        'text snip': Text("Text('')") + Pause('30') + Key('left:2'),
-        'key snip': Text("Key('')") + Pause('30') + Key('left:2'),
-        'pause snip': Text("Pause('')") + Pause('30') + Key('left:2'),
-        'pie def': Text('df'),
-        'in com': Text('# COMMAND ----------'),
+        # 'text snip': Text("Text('')") + Pause('30') + Key('left:2'),
+        # 'key snip': Text("Key('')") + Pause('30') + Key('left:2'),
+        # 'pause snip': Text("Pause('')") + Pause('30') + Key('left:2'),
+        # 'pie def': Text('df'),
+        # 'in com': Text('# COMMAND ----------'),
+        # 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
 
         # Python
         'py com': Text('##############################') + Key('enter') + Text('# '),
         'py com end': Text('##############################') + Key('enter'),
 
         # debugging
-        'run it': Key("f5"),
+        'play it': Key("f5"),
+        'bug it': Key("c-1") + Key("f5") + Pause('10'),
         'kill it': Key("s-f5"),
         'restart': Key("cs-f5"),
         'step in': Key('f11'),
         'step over': Key('f10'),
         'step out': Key("s-f11"),
         'breaks snap': Key("f9"),
+        'watch add': Key("c-a,c-w"),
 
         # open files
         "Open pie": Key("c-k,c-o,a-d") + Pause('50') + Text(R'C:\NatLink\NatLink\MacroSystem') + Key("enter:2"),
@@ -44,12 +50,9 @@ class CodeMappings(MappingRule):
         "Open code": Key("c-k,c-o,a-d") + Pause('50') + Text(R"D:\GitProjects") + Key("enter:2"),
 
         # Editing
-        'replace local': Key("c-h"),
-		'replace global': Key("cs-h"),
         'back space': Key('backspace'),
-        'Div <text>': Text('<div>%(text)s</div>'),
         'New copy': Key('c-c,c-v'),
-        'copy down': Key('sa-down'),
+        'copy down': Key('as-down'),
 		'Load web': Key('w-4') + Pause('50') + Key('f5') + Pause('50') + Key('w-5'),
         'copy line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end,c-c'),
         'select line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end'),
@@ -59,9 +62,35 @@ class CodeMappings(MappingRule):
         # 'line <number> <n>': Key('c-g') + Text('%(number)d') + Key('enter,end') + Key('left:%(n)d'),
         'zap': Key("c-k,c-c"),
         'zip': Key("c-k,c-u"),
-        'del line': Key("s-delete"),
         'tab <tab>': Key('a-%(tab)d'),
         'Change language': Key('c-k,m'),
+        'split it': Key('c-backslash'),
+        'new file': Key('ca-n'),
+        'replace': Key('c-h'),
+
+        # code
+        'F call': Text('F.col("")') + Key('left:2'),
+        'to select': Text('.select()') + Key('left:1'),
+        'to join': Text('.join()') + Key('left:1'),
+        'to where': Text('.where()') + Key('left:1'),
+        'to distinct': Text('.distinct()'),
+
+
+        # Re-factorring
+        'loot': Key('c-.'),
+        # 'Ludi': Key('c-j'),
+        'loot hint': Key('c-q'),
+        'loot ref': Key('s-f12'),
+        'loot trim': Key('c-k,c-xs'),
+        # 'loot method': Key('ca-m'),
+        # 'loot Sig': Key('c-f6'),
+        # 'loot do': Key('a-d'),
+        # 'loot move': Key('f6'),
+        # 'loot surround': Key('ca-t'),
+        # 'loot up': Key('cs-up'),
+        # 'loot down': Key('cs-down'),
+        # 'loot fun': Key('c-f12'),
+        # 'to do': Text('# TODO:'),
 
         # Navigation
         'snurch': Key('cs-f'),
@@ -69,45 +98,161 @@ class CodeMappings(MappingRule):
         'nexty': Key('c-pgdown'), 
         'Save all': Key('c-k,s'),
         'Save': Key('c-s'),
-        'see view': Key('cs-e'),
-        'team view': Key('cs-g,g'),
-        'term view':Key('cs-`'),
+        'view see': Key('cs-e'),
+        'view bug': Key('cs-d'),
+        'view toggle': Key('c-b'),
+        'view source': Key('cs-g,g'),
+        'view shell':Key('c-`'),
+        'view set':Key('c-comma'),
+        'view extension':Key('cs-x'),
+        'view test':Key('c-v,c-t'),
+        'view key':Key('c-k,c-s'),
+        'goat branches':Key('c-g,c-o'),
+        'view interpreter':Key('c-p,c-i'),
+        'see minus': Key('c-c,c-'),
+        'new shell':Key('cs-`'),
+        'shelly':Key('c-pageup'),
         'Open tab': Key('c-n'),
+        'Open folder': Key('c-k,c-o'),
         'Sidebar': Key('c-b'),
-        'find death': Key('sa-f12'),
-        'goat death': Key('f12'),
-        'Goat': Key('c-p'),
+        'goat reference': Key('sa-f12'),
+        'goat in': Key('f12'),
+        'goat usage': Key('s-f12'),
+        'goat peak': Key('a-f12'),
+        'goat side': Key('c-k,f12'),
+        'Goat': Key('c-e'),
         'Goat funk': Key('cs-o'),
         'Goat prop': Key('cs-p'),
         'focus code': Key('c-j'),
         'close all': Key('c-k,w'),
         'close tab': Key('c-f4'),
-        'key cuts': Key('c-k, c-s'),
+        
         'rename': Key('f2'),
         'doneUnder': Text('__'),
-        # '<nocaps>': Text('%(noccaps)s'),
-        # Commands
-        'Execute <text>': Key('cs-p') + Text('Execute %(text)s') + Key('enter'), #Query, selected
+
+        # gpt
+        ' spark': Key('c-g, c-a') + Pause('30') + Text('pyspark '),
+        'chat py': Key('c-g, c-a') + Pause('30') + Text('python '),
+        
+        # bookmarks
+        'snap book': Key('c-b,c-k'),
+        'list book': Key('c-b,c-l'),
+        'snap book <number>': Key('cs-%(number)d') + Pause('50') + Key(''),
+        'book <number>': Key('c-%(number)d'),
+        'see minus': Key('c-b,c-c'),
+               
+        # search and replace
+        'replace local': Key("c-h"),
+		'replace global': Key("cs-h"),
+
+        # terminal navigation
+        # 'cd <lowtext>':  Text('cd %(lowtext)s') + Key('enter'),
+        'cd back': Text('cd ..') + Key('enter'),
+        'cd <number>': Function(repeat) + Key('enter'),
+        'cd client': Text('cd src/libraries/client_src/') + Key('enter'),
+        'cd common': Text('cd src/libraries/common_src/') + Key('enter'),
+        'cd pass': Text(' cd src/projects/passlist_proj/passlist_src/') + Key('enter'),
+        'cd inventory': Text(' cd src/projects/inventory_proj/inventory_src/') + Key('enter'), 
+        'cd Rules': Text(' cd src/projects/rules_engine_proj/rules_engine_src/') + Key('enter'), 
+        'cd payment': Text(' cd src/projects/payment_proj/payment_src/') + Key('enter'),
+        'cd root': Text(' cd D:GitProjects/data-platform') + Key('enter'),
 
         # git 
-        'get check out develop':Key('cs-`') + Text('inter') + Key('enter') + Pause("20") + Text("git co develop && git pull") + Key("enter"),
-        'get check out feature':Key('cs-`') + Pause("20") + Text("git co feature/"),
-        'get called release':Key('cs-`') + Text("git cob release/"),
-        'get called feature':Key('cs-`') + Text("git cob feature/DF-"),
-        'num var': Key("%,(,n,u,m,b,e,r,),d"),
-        'get checkout <text>':Key('cs-`') + Text("git co %(text)s/"),
-        'get merge <text>':Key('cs-`') + Pause("20") + Text("git merge --%(text)s"), #Continue, abort
-        'get merge develop':Key('cs-`') + Text("git merge origin/develop") + Key('enter'),
-        'get commit':Key('cs-`') + Pause("10") + Text('git commit -am ""') + Pause("10") +         Key('left'),
-        'get push':Key('cs-`') + Pause("10") + Text('git push') + Pause("10") + Key('enter'),
-        'get pull':Key('cs-`') + Pause("10") + Text('git pull') + Pause("10") + Key('enter'),
-        'get branch':Key('cs-`') + Pause("10") + Text('git branch -r') + Pause("10") + Key('enter'),
+        'get check out main': Function(gitPause) + Text("git co main && git pull && git fetch") + Key("enter"),
+        'get check out feature': Function(gitPause) + Text("git co feature/"),
+        'get fetch': Function(gitPause) + Text("git fetch") + Key('enter'),
+        # 'get called <nospace>': Function(gitPause) + Text("git cob %(nospace)s/"),
+        'get called ticket': Function(gitPause) +  Text("git cob feature/DP-"),
+        'get called feature': Function(gitPause) +  Text("git cob feature/"),
+        'get checkout <text>': Function(gitPause) + Text("git co %(text)s/"),
+        'get merge <text>': Function(gitPause) + Text("git merge --%(text)s"), #Continue, abort
+        'get merge develop': Function(gitPause) + Text("git merge origin/develop") + Key('enter'),
+        'get merge main': Function(gitPause) + Text("git merge origin/main") + Key('enter'),
+        'get tags': Function(gitPause) + Text('git tag -l --sort=-v:refname') + Key('enter'),
+        'get tag pass': Function(gitPause) + Text('git tag passlist/'),
+        'get tag rules': Function(gitPause) + Text('git tag rules_engine/'),
+        'get tag payment': Function(gitPause) + Text('git tag payment/'),
+        'get tag invited': Function(gitPause) + Text('git tag invited_ultra_premium/'),
+        'get tag <text>': Function(gitPause) + Text('git tag %(text)s/'),
+        'get tag push': Text(' & git push origin --tag') + Key('enter'),
+        'get tag delete': Text('git tag -d '),
+        'get tag pull': Text('git pull --tags -f') + Key('enter'),
+        'get commit': Function(gitPause) + Text('git commit -am ""') + Pause("10") + Key('left'),
+        'get commit wip': Function(gitPause) + Text('git commit -am wip') + Key('enter'),
+        'get push yes': Function(gitPause) + Text('git push') + Pause("10") + Key('enter'),
+        'get push': Function(gitPause) + Text('git push') + Pause("10") + Key('enter'),
+        'Get push menu': Key("c-g,p"),
+        'get pull': Function(gitPause) + Text('git pull') + Pause("10") + Key('enter'),
+        'get branch': Function(gitPause) + Text('git branch -r') + Pause("10") + Key('enter'),
+        'get branches': Key('cs-`'),
+        'get branch delete': Key('shift,shift') + Text('delete old branch') + Key('enter'),
+        'get discard': Function(gitPause) + Text("git reset & git checkout -- .") + Pause("10") + Key('enter'),
+        'get stash <text>': Function(gitPause) + Text("git stash %(text)s") + Key("enter"), #drop/pop
+        'get stash': Function(gitPause) + Text("git stash") + Key("enter"), #drop/pop
+        'get prune': Function(gitPause) + Text("git remote prune origin") + Key("enter"),
+        'get PR': Key("cs-x,p"),
+        'get recent': Key("as-c"),
+        'get add': Key("ca-a"),
 
-        # Builds
-        'yarn <text>':Key('cs-`') + Pause('10') + Text("yarn %(text)s") + Key("enter"), #install, lint, clean, build, dev
-        'build wheel':Key('cs-`') + Pause('10') + Text('./buildLoadWheelToCluster.sh') + Key('enter'),
 
-        # 'test': bar("text"),  
+
+      
+        # bazel
+        'bay shut down': Function(gitPause) + Text("bazelisk shutdown") + Key("enter"),
+        'bay version': Function(gitPause) + Text("bazelisk version") + Key("enter"),
+        'bay build': Function(gitPause) + Text("bazelisk build "),
+        'bay build pass': Function(gitPause) + Text("bazelisk build passlist_venv") + Key('enter'),
+        'bay build rules': Function(gitPause) + Text("bazelisk build rules_engine_venv") + Key('enter'),
+        'bay build payment': Function(gitPause) + Text("bazelisk build payment_venv") + Key('enter'),
+        'bay build <text>': Function(gitPause) + Text("bazelisk build %(text)s"),
+
+        # tests
+        'test all': Function(gitPause) + Text("python -m pytest") + Key("enter"), #drop/pop
+
+        #pip
+        'pippy': Function(gitPause) + Text("pipenv "),
+        'pip install': Function(gitPause) + Text("pipenv install"),
+        'pip remove': Function(gitPause) + Text("pipenv --rm"),
+        'pip develop': Function(gitPause) + Text("pipenv install --dev") + Key('enter'),
+        'pip skip': Function(gitPause) + Text("pipenv install --dev --skip-lock") + Key('enter'),
+        'pip run': Function(gitPause) + Text("pipenv run "),
+        'pip instally': Function(gitPause) + Text("pipenv install '-e .'"),
+        'pip install edit': Function(gitPause) + Text("pipenv install --editable "),
+        'pip list': Function(gitPause) + Text("pipenv run pip list") + Key('enter'),
+        'pip shell': Function(gitPause) + Text("pipenv shell") + Key('enter'),
+        'pip clear': Function(gitPause) + Text("pipenv --clear") + Key('enter'),
+        'pip lock clear': Function(gitPause) + Text("pipenv lock --clear") + Key('enter'),
+        'pip sync': Function(gitPause) + Text("pipenv run pipenv-setup sync") + Key('enter'),
+        'pip require': Function(gitPause) + Text("pipenv lock -r > requirements.txt") + Key('enter'),
+        'pip exit': Function(gitPause) + Text("exit") + Key('enter'),
+        'pip interpreter': Key('cs-p') + Text("python in") + Key("enter"),
+        'pip graph': Key('cs-p') + Text("pipenv graph") + Key("enter"),
+
+
+        # databricks cli
+        'bricks <nocaps>': Function(gitPause) + Text("databricks %(nocaps)s"),
+        'bricks secrets': Function(gitPause) + Text("databricks secrets list-scopes") + Key('enter'),
+        'bricks scopes': Function(gitPause) + Text("databricks secrets list --scope"),
+        'bricks connect': Function(gitPause) + Text("databricks-connect configure"),
+        'bricks test': Function(gitPause) + Text("databricks-connect test"),
+        'bricks push': Function(gitPause) + Text("databricks workspace import_dir . /passlist -o") + Key('enter'),
+
+        # docker
+        'dock list': Function(gitPause) + Text('docker ps -a') + Key('enter'),
+        'dock rem': Function(gitPause) + Text('docker rm'),
+        'dock start': Function(gitPause) + Text('docker start'),
+        'dock stop': Function(gitPause) + Text('docker stop'),
+        'dock logs': Function(gitPause) + Text('docker logs'),
+        'dock compose': Function(gitPause) + Text('docker-compose up') + Key('enter'),
+        'dock build ': Function(gitPause) + Text('docker-compose up --build') + Key('enter'),
+        'dock to air': Function(gitPause) + Text('docker exec -it airflow_airflow-webserver_1 bash') + Key('enter'),
+
+        # 'dock red': Function(gitPause) + Text('docker run --name redis -p 6379:6379 -d redis') + Key('enter'),
+        # 'dock start red': Function(gitPause) + Text('docker start redis') + Key('enter'),
+
+
+        'move file': Key('f2,c-c,a-t,c-v,a-t,down'),
+
     }
     extras=[
         Integer('tab', 1, 20),

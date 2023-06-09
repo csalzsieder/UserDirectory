@@ -17,6 +17,35 @@ class IERule(MappingRule):
         "(center pane | (file | folder) (pane | list))": Key("a-d, tab:3"),
         "sort [headings]": Key("a-d, tab:4"),
 
+
+        # code - bricks
+        'zap': Key('c-slash'), 
+        'run me': Key('c-enter'), 
+        'run it': Key('s-enter'), 
+        'run up': Key('sa-up'), 
+        'run down': Key('sa-down'), 
+        'run all': Key('sa-enter'), 
+        'nexty': Key('c-pgdown'),
+        'previ': Key('c-pgup'),
+        'insert up': Key('ca-p'),
+        'insert down': Key('ca-n'),
+        'insert display': Key('ca-p') + Pause('100') + Text('display('),
+        'split cell': Key('ca-n'),
+        'copy cell': Key('ca-c'),
+        'cut cell': Key('ca-x'),
+        'del cell': Key('ca-d'),
+        'del line': Key('s-delete'),
+        'cell down': Key('ca-down'),
+        'indent me': Key('c-]'),
+        'dedent me': Key('c-['),
+        'find me': Key('ca-f'),
+        'paste wheel': Text('dbfs:/FileStore/jars/passlist-1.0.0-py3-none-any.whl'),
+        'print count': Text('print(df.count())'),
+
+
+        'frame it': Text('df.'),
+
+
         "goat dry fly": Key("a-d") + Text(R'D:\GitProjects\dryfly\FreeStone') + Key('enter'),
         "goat code": Key("a-d") + Text(R'D:\GitProjects') + Key('enter'),
         "goat me bin": Key("a-d") + Text(R'C:\Users\csalzsieder\.nuget\packages\passlist.businesslogic\1.1.4.16\lib\netcoreapp2.1') + Key('enter'),
@@ -31,17 +60,19 @@ class IERule(MappingRule):
 
         "Open MC API": Key("a-d") + Text(R'D:\GitProjects\marketing-content-api\src\MarketingContent.Api.sln') + Key('enter'),
         "Open pass": Key("a-d") + Text(R'D:\GitProjects\offering-list\OfferingList.sln') + Key('enter'),
-        "Open funk": Key("a-d") + Text(R'D:\GitProjects\accommodation-tags-etl\AccommodationTagETL.sln') + Key('enter'),
-        "code <dashtext> ": Key("a-d") + Text(R'D:\GitProjects\%(dashtext)s') + Key('enter'),
+        "Open QA": Key("c-t") + Text(R'https://adb-1477701841953214.14.azuredatabricks.net/?o=1477701841953214') + Key('enter'),
+        
+        
 
         # "copy grammers": Key("a-d") + Text(R'C:\NatLink\NatLink\MacroSystem') + Key('enter') + Pause('50') + Key('tab:9, down:2, shift:down, end, shift:up,c-c,a-d') + Text('C:\NatLink\UserDirectory') + Key('enter') + Pause('50') + Key('enter, tab:9,c-v') + Pause('50') + Key('enter'),
         "Test mimic" : Mimic
 
     }
     extras = [
-        Dictation("text"),
+        Dictation("text").lower(),
         Integer("n", 1, 1000),
         Dictation("dashtext", default="").lower().replace(" ", "-"),
+
     ]
     defaults = {"n": 1}
 
