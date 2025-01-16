@@ -58,7 +58,7 @@ class CodeMappings(MappingRule):
         'select line <number>': Key('c-g') + Text('%(number)d') + Key('enter,s-end'),
         'select multi <number>': Key("shift:down, ctrl:down, alt:down, down:%(number)d, shift:up, ctrl:up, alt:up,"),
         # 'line <number>': Key('c-g') + Pause('5') + Text('%(number)d'),
-        'line <number>': Key('c-g') + Text('%(number)d') + Key('enter,end'),
+        'line <number>': Key('c-g, c-l') + Text('%(number)d') + Key('enter,end'),
         # 'line <number> <n>': Key('c-g') + Text('%(number)d') + Key('enter,end') + Key('left:%(n)d'),
         'zap': Key("c-k,c-c"),
         'zip': Key("c-k,c-u"),
@@ -68,12 +68,8 @@ class CodeMappings(MappingRule):
         'new file': Key('ca-n'),
         'replace': Key('c-h'),
 
-        # code
-        'F call': Text('F.col("")') + Key('left:2'),
-        'to select': Text('.select()') + Key('left:1'),
-        'to join': Text('.join()') + Key('left:1'),
-        'to where': Text('.where()') + Key('left:1'),
-        'to distinct': Text('.distinct()'),
+        # codeso/yeah
+
 
 
         # Re-factorring
@@ -82,8 +78,9 @@ class CodeMappings(MappingRule):
         'loot hint': Key('c-q'),
         'loot ref': Key('s-f12'),
         'loot trim': Key('c-k,c-xs'),
-        # 'loot method': Key('ca-m'),
-        # 'loot Sig': Key('c-f6'),
+        'loot method': Key('cs-r'),
+        'loot find': Key('cs-o'),
+        'loot co': Key('c-i'),
         # 'loot do': Key('a-d'),
         # 'loot move': Key('f6'),
         # 'loot surround': Key('ca-t'),
@@ -94,19 +91,20 @@ class CodeMappings(MappingRule):
 
         # Navigation
         'snurch': Key('cs-f'),
-        'previ': Key('c-pgup'),
+        'pallet': Key('cs-p'),
         'nexty': Key('c-pgdown'), 
         'Save all': Key('c-k,s'),
         'Save': Key('c-s'),
         'view see': Key('cs-e'),
-        'view bug': Key('cs-d'),
+        'view bar': Key('ca-b'),
+        'view bug': Key('cs-y'),
         'view toggle': Key('c-b'),
         'view source': Key('cs-g,g'),
         'view shell':Key('c-`'),
         'view set':Key('c-comma'),
         'view extension':Key('cs-x'),
         'view test':Key('c-v,c-t'),
-        'view key':Key('c-k,c-s'),
+        'view keys':Key('c-k,c-s'),
         'goat branches':Key('c-g,c-o'),
         'view interpreter':Key('c-p,c-i'),
         'see minus': Key('c-c,c-'),
@@ -126,18 +124,21 @@ class CodeMappings(MappingRule):
         'focus code': Key('c-j'),
         'close all': Key('c-k,w'),
         'close tab': Key('c-f4'),
+        'close others': Key('c-c,o'),
+        'paste offerings': Text('src\projects\merchandising_proj\pass_offerings_src'),
         
         'rename': Key('f2'),
         'doneUnder': Text('__'),
 
         # gpt
-        ' spark': Key('c-g, c-a') + Pause('30') + Text('pyspark '),
-        'chat py': Key('c-g, c-a') + Pause('30') + Text('python '),
+        'chat spark': Key('ca-i') + Pause('30') + Text('pyspark '),
+        'chat py': Key('ca-i') + Pause('30') + Text('python '),
+        'chat': Key('ca-i'),
         
         # bookmarks
-        'snap book': Key('c-b,c-k'),
-        'list book': Key('c-b,c-l'),
-        'snap book <number>': Key('cs-%(number)d') + Pause('50') + Key(''),
+        'book snap': Key('c-b,c-k'),
+        'book list': Key('c-b,c-l'),
+        'book snap <number>': Key('cs-%(number)d') + Pause('50') + Key(''),
         'book <number>': Key('c-%(number)d'),
         'see minus': Key('c-b,c-c'),
                
@@ -158,29 +159,35 @@ class CodeMappings(MappingRule):
         'cd root': Text(' cd D:GitProjects/data-platform') + Key('enter'),
 
         # git 
-        'get check out main': Function(gitPause) + Text("git co main && git pull && git fetch") + Key("enter"),
+        'get merge main': Function(gitPause) + Text("git merge origin/main") + Key('enter'),
+        'get check out main': Function(gitPause) + Text("git checkout main && git pull && git fetch") + Key("enter"),
         'get check out feature': Function(gitPause) + Text("git co feature/"),
         'get fetch': Function(gitPause) + Text("git fetch") + Key('enter'),
         # 'get called <nospace>': Function(gitPause) + Text("git cob %(nospace)s/"),
-        'get called ticket': Function(gitPause) +  Text("git cob feature/DP-"),
-        'get called feature': Function(gitPause) +  Text("git cob feature/"),
+        'get called ticket': Function(gitPause) +  Text("git checkout -b feature/DP-"),
+        'get called feature': Function(gitPause) +  Text("git checkout -b feature/"),
         'get checkout <text>': Function(gitPause) + Text("git co %(text)s/"),
         'get merge <text>': Function(gitPause) + Text("git merge --%(text)s"), #Continue, abort
-        'get merge develop': Function(gitPause) + Text("git merge origin/develop") + Key('enter'),
-        'get merge main': Function(gitPause) + Text("git merge origin/main") + Key('enter'),
+        
         'get tags': Function(gitPause) + Text('git tag -l --sort=-v:refname') + Key('enter'),
-        'get tag pass': Function(gitPause) + Text('git tag passlist/'),
-        'get tag rules': Function(gitPause) + Text('git tag rules_engine/'),
+        'get tag push': Text(' & git push origin --tag') + Key('enter'),
+        'get tag pass': Function(gitPause) + Text('git tag pass_offerings/'),
+        'get tag rules': Function(gitPause) + Text('git tag pass_rules_engine/'),
         'get tag payment': Function(gitPause) + Text('git tag payment/'),
         'get tag invited': Function(gitPause) + Text('git tag invited_ultra_premium/'),
         'get tag <text>': Function(gitPause) + Text('git tag %(text)s/'),
-        'get tag push': Text(' & git push origin --tag') + Key('enter'),
+        'get patch manager': Function(gitPause) + Text('push_tags -p uc_manager') + Key('enter'),
+        'get patch pass': Function(gitPause) + Text('push_tags -p pass_offerings') + Key('enter'),
+        'get patch <snaketext>': Function(gitPause) + Text('push_tags -p %(snaketext)s') + Key('enter'),
+        'get minor <snaketext>': Function(gitPause) + Text('push_tags -m %(snaketext)s') + Key('enter'),
         'get tag delete': Text('git tag -d '),
         'get tag pull': Text('git pull --tags -f') + Key('enter'),
         'get commit': Function(gitPause) + Text('git commit -am ""') + Pause("10") + Key('left'),
         'get commit wip': Function(gitPause) + Text('git commit -am wip') + Key('enter'),
+        'get commit trigger': Function(gitPause) + Text('git commit -am trigger-dbx-jobs') + Key('enter'),
         'get push yes': Function(gitPause) + Text('git push') + Pause("10") + Key('enter'),
         'get push': Function(gitPause) + Text('git push') + Pause("10") + Key('enter'),
+        'get sink': Function(gitPause) + Text('git commit -am wip & git push') + Key('enter'),
         'Get push menu': Key("c-g,p"),
         'get pull': Function(gitPause) + Text('git pull') + Pause("10") + Key('enter'),
         'get branch': Function(gitPause) + Text('git branch -r') + Pause("10") + Key('enter'),
@@ -190,19 +197,21 @@ class CodeMappings(MappingRule):
         'get stash <text>': Function(gitPause) + Text("git stash %(text)s") + Key("enter"), #drop/pop
         'get stash': Function(gitPause) + Text("git stash") + Key("enter"), #drop/pop
         'get prune': Function(gitPause) + Text("git remote prune origin") + Key("enter"),
+        'get upstream': Function(gitPause) + Text("git branch --set-upstream-to=origin/"),
+        'get project': Function(gitPause) + Text("cd D:/GitProjects/data-platform/src") + Key("enter"),
         'get PR': Key("cs-x,p"),
         'get recent': Key("as-c"),
         'get add': Key("ca-a"),
 
+        # toggle
+        'toggle <text>': Function(gitPause) + Text("python toggle_environment.py %(text)s") + Key("enter"),
 
-
-      
         # bazel
         'bay shut down': Function(gitPause) + Text("bazelisk shutdown") + Key("enter"),
         'bay version': Function(gitPause) + Text("bazelisk version") + Key("enter"),
         'bay build': Function(gitPause) + Text("bazelisk build "),
-        'bay build pass': Function(gitPause) + Text("bazelisk build passlist_venv") + Key('enter'),
-        'bay build rules': Function(gitPause) + Text("bazelisk build rules_engine_venv") + Key('enter'),
+        'bay build pass': Function(gitPause) + Text("bazelisk build pass_offerings_venv") + Key('enter'),
+        'bay build rules': Function(gitPause) + Text("bazelisk build pass_rules_engine_venv") + Key('enter'),
         'bay build payment': Function(gitPause) + Text("bazelisk build payment_venv") + Key('enter'),
         'bay build <text>': Function(gitPause) + Text("bazelisk build %(text)s"),
 
@@ -222,20 +231,18 @@ class CodeMappings(MappingRule):
         'pip shell': Function(gitPause) + Text("pipenv shell") + Key('enter'),
         'pip clear': Function(gitPause) + Text("pipenv --clear") + Key('enter'),
         'pip lock clear': Function(gitPause) + Text("pipenv lock --clear") + Key('enter'),
+        'pip lock': Function(gitPause) + Text("pipenv lock -r > requirements.txt") + Key('enter'),
         'pip sync': Function(gitPause) + Text("pipenv run pipenv-setup sync") + Key('enter'),
-        'pip require': Function(gitPause) + Text("pipenv lock -r > requirements.txt") + Key('enter'),
+        'pip require': Function(gitPause) + Text("pip install -r requirements.txt") + Key('enter'),
         'pip exit': Function(gitPause) + Text("exit") + Key('enter'),
         'pip interpreter': Key('cs-p') + Text("python in") + Key("enter"),
         'pip graph': Key('cs-p') + Text("pipenv graph") + Key("enter"),
 
 
         # databricks cli
-        'bricks <nocaps>': Function(gitPause) + Text("databricks %(nocaps)s"),
-        'bricks secrets': Function(gitPause) + Text("databricks secrets list-scopes") + Key('enter'),
-        'bricks scopes': Function(gitPause) + Text("databricks secrets list --scope"),
+        # 'bricks <nocaps>': Function(gitPause) + Text("databricks %(nocaps)s"),
         'bricks connect': Function(gitPause) + Text("databricks-connect configure"),
         'bricks test': Function(gitPause) + Text("databricks-connect test"),
-        'bricks push': Function(gitPause) + Text("databricks workspace import_dir . /passlist -o") + Key('enter'),
 
         # docker
         'dock list': Function(gitPause) + Text('docker ps -a') + Key('enter'),
@@ -261,7 +268,7 @@ class CodeMappings(MappingRule):
         Dictation("text"),
         Dictation("nocaps", default="").lower(),
         Dictation("camel_text", default="").camel(),
-        Dictation("snaketext", default="").lower().replace(" ", "_"),
+        Dictation("snaketext").lower().replace(" ", "_"),
     ]
 
 context = AppContext(executable='code')

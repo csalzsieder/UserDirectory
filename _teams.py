@@ -1,4 +1,4 @@
-2#imports the library
+# imports the library
 from dragonfly import (Function, Grammar, AppContext, MappingRule, Integer, Key, Text, Dictation, Choice, Pause, Mouse)
 
 
@@ -21,7 +21,7 @@ class CodeMappings(MappingRule):
         'goat': Key('c-g'),
         'Filter': Key('cs-f'),
         'make call': Key('cs-c') + Key('csa-slash'),
-        # '<text>': Text("%(text)s "),
+        # '<text>': Text("%(text)s"),
         
     }
     extras=[
